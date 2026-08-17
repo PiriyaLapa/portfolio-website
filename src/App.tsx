@@ -1,16 +1,18 @@
-import { Hero } from "./components/Hero"
-import { About } from "./components/About"
-import { Projects } from "./components/Projects"
-import { Contact } from "./components/Contact"
+import { Routes, Route } from "react-router-dom"
+import { Layout } from "./components/Layout"
+import { Home } from "./pages/Home"
+import { Projects } from "./pages/Projects"
+import { ResumeContact } from "./pages/ResumeContact"
 
 function App() {
   return (
-    <div className="min-h-svh bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-50">
-      <Hero />
-      <About />
-      <Projects />
-      <Contact />
-    </div>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/resume" element={<ResumeContact />} />
+      </Route>
+    </Routes>
   )
 }
 

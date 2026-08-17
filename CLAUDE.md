@@ -281,3 +281,24 @@ improvising new language.
   (that old thread is retired, left in place per Nothing is Deleted). First
   git commit follows this entry. Not done: family announcement not yet
   posted (pending confirmation), no retrospective (`/rrr`) run yet.
+- 2026-08-17: Rebuilt the site to match a Google Stitch design export Benz
+  provided (3 HTML pages: Home, Projects, Resume & Contact). Converted from
+  single-page scroll to multi-page routing (`react-router-dom`, `Layout` +
+  `Nav` + `Footer`), ported Stitch's full design-token system into
+  `tailwind.config.js` (colors, spacing, fontFamily/fontSize scale — Hanken
+  Grotesk/Inter/JetBrains Mono, loaded via `@config` in `index.css`), and
+  wrote `Home.tsx`, `Projects.tsx`, `ResumeContact.tsx`. Two deliberate
+  deviations from the Stitch export, not silent: (1) dropped Stitch's
+  homepage "Selected Evidence" bento grid content (it used fabricated project
+  names/metrics that don't exist) and replaced it with real Lumine/Paws &
+  Pace teasers linking to `/projects` — fabricated case studies would violate
+  NFR-5; (2) built a working mobile hamburger menu instead of Stitch's
+  visual-only button, since FR-10 makes phone navigation a hard requirement,
+  not a nice-to-have. Diagram thumbnails on `/projects` use a plain
+  placeholder box (no fake AI-generated diagram images) until the real
+  `.drawio` exports land. Added Benz's real headshot
+  (`public/content/Profile_image_Piriya.jpg`) to the Hero photo card,
+  replacing the initials-placeholder fallback. `npm run build` and `npm run
+  lint` both pass clean. Not done: dark mode (config tokens carried over but
+  unused, no toggle built — out of SRS scope), diagrams, case study PDF,
+  resume PDF file itself, real LinkedIn URL, deployment.

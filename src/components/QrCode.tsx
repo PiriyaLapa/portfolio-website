@@ -1,14 +1,12 @@
 import { QRCodeSVG } from "qrcode.react"
 
-export function QrCode({ url }: { url: string }) {
+export function QrCode({ url, caption }: { url: string; caption: string }) {
   return (
-    <div className="flex flex-col items-center gap-2">
-      <div className="rounded-lg border border-gray-200 bg-white p-3 dark:border-gray-800">
-        <QRCodeSVG value={url} size={144} />
-      </div>
-      <p className="text-xs text-gray-500 dark:text-gray-500">
-        Scan to open this site
-      </p>
+    <div className="bg-white p-4 border border-border-gray rounded flex flex-col items-center gap-3 shadow-[0_4px_20px_rgba(15,23,42,0.05)]">
+      <QRCodeSVG value={url} size={120} />
+      <span className="font-label-caps text-label-caps text-text-muted text-center">
+        {caption}
+      </span>
     </div>
   )
 }

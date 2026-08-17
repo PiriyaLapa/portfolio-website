@@ -18,6 +18,7 @@ export interface ProjectContent {
     srsPdf?: string
   }
   limitations?: string[]
+  diagrams?: { label: string; figure: string }[]
   primary: boolean
 }
 
@@ -27,17 +28,34 @@ export const site = {
   hero: {
     name: "Piriya (Benz) Lapa",
     role: "Business Analyst / System Analyst",
-    narrative:
-      "9+ years in retail sales, self-taught into software development, now applying that as AI-assisted BA/SA work.",
+    tagline: "Transforming retail experience into engineered analytical solutions.",
+    statusBadge: "SYSTEM STATUS: READY FOR DEPLOYMENT",
+    idTag: "ID: PL-8092",
+    photoUrl: "/content/Profile_image_Piriya.jpg" as string | null,
   },
 
   about: {
-    journey:
-      "9+ years of retail sales experience, self-taught software development, now pivoting into Business Analyst / System Analyst roles using AI-assisted engineering practice.",
+    docRef: "DOC REF: AB-101",
+    statement: [
+      "My trajectory is defined by a continuous drive to bridge user needs with technical execution. Beginning with over 9 years of frontline retail sales experience, I developed an acute understanding of customer behavior, pain points, and operational bottlenecks. Recognizing the transformative power of technology, I transitioned into a self-taught developer role, acquiring the foundational logic to build solutions.",
+      "Today, I synthesize these dual perspectives as an AI-assisted Business and System Analyst. I leverage my retail empathy alongside technical acumen to engineer analytical solutions that are not only robust but inherently user-centric, translating complex business requirements into actionable system architectures.",
+    ],
     strengths: [
-      "Bridges business and technical stakeholders from real retail-floor experience",
-      "Ships and documents real, code-verified systems — not just diagrams",
-      "Self-directed learner comfortable owning a project end to end",
+      {
+        icon: "troubleshoot",
+        title: "Analytical Precision",
+        description: "Translating ambiguity into structured data models and clear requirements.",
+      },
+      {
+        icon: "terminal",
+        title: "Technical Fluency",
+        description: "Bridging the gap between business stakeholders and engineering teams.",
+      },
+      {
+        icon: "group",
+        title: "Stakeholder-Centric Design",
+        description: "Rooted in 9+ years of retail, ensuring solutions drive real value.",
+      },
     ],
   },
 
@@ -69,6 +87,12 @@ export const site = {
       limitations: [
         // TODO: pull 2-3 honest items from SRS_Lumine_v1_0_Current_State.md
       ],
+      diagrams: [
+        { label: "ER Diagram", figure: "FIG. 1" },
+        { label: "BPMN Process", figure: "FIG. 2" },
+        { label: "Use Case Diagram", figure: "FIG. 3" },
+        // Remaining 9 of 13 diagrams: exported once docs/diagrams/lumine_diagrams.drawio is rendered
+      ],
       primary: true,
     },
     {
@@ -89,10 +113,13 @@ export const site = {
     },
   ] as ProjectContent[],
 
+  diagramsTotalCount: 13,
+
   resume: {
-    label: "Download Resume",
+    label: "Download Business Analyst Resume",
     // Place the actual file at public/content/Piriya_Resume_BusinessAnalyst.pdf
     fileUrl: "/content/Piriya_Resume_BusinessAnalyst.pdf",
+    fileLabel: "Resume.pdf",
   },
 
   caseStudy: {
