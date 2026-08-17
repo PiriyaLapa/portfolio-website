@@ -23,7 +23,7 @@ export interface ProjectContent {
 }
 
 export const site = {
-  deployedUrl: "https://benzlapa-portfolio.example.com", // TODO: replace once deployed
+  deployedUrl: "https://portfolio-website-olive-xi-rk40667qsr.vercel.app",
 
   hero: {
     name: "Piriya (Benz) Lapa",
