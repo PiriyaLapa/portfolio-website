@@ -60,9 +60,11 @@ export const site = {
     ],
   },
 
-  // Reviewed 2026-08-18: Node.js and "Sketchnoting & Visual Metaphor" were dropped
-  // from a Stitch-generated draft of this section — neither is evidenced in the
-  // Lumine/Paws & Pace stacks or anywhere else, so they didn't ship.
+  // Reviewed 2026-08-18 against docs/Piriya_Resume_BusinessAnalyst.md — Node.js
+  // and "Sketchnoting & Visual Metaphor" were dropped from an earlier Stitch draft
+  // for lacking evidence in the Lumine/Paws & Pace stacks, but the resume itself
+  // confirms both (Node.js from the Transcode role, sketchnoting as a listed
+  // Communication skill), so they're back in.
   competencies: [
     {
       icon: "manage_search",
@@ -83,6 +85,7 @@ export const site = {
         "React & React Native",
         "TypeScript",
         "Python & FastAPI",
+        "Node.js",
         "MySQL",
         "AI-Assisted Development",
       ],
@@ -91,7 +94,7 @@ export const site = {
       icon: "groups",
       title: "Core Soft Skills",
       items: [
-        "Complex-to-Simple Explanation",
+        "Complex-to-Simple Explanation (Sketchnoting & Visual Metaphor)",
         "English (Working Proficiency)",
         "Thai (Native)",
         "Problem Solving & Critical Thinking",
@@ -133,7 +136,7 @@ export const site = {
         // srsPdf: not yet published — add once the Case Study PDF exists
       },
       limitations: [
-        // TODO: pull 2-3 honest items from SRS_Lumine_v1_0_Current_State.md
+        "Customer outreach itself (calls/messages) is currently done manually.",
       ],
       diagrams: [
         { label: "Use Case Diagram", figure: "FIG. 1", image: "/content/diagrams/lumine-use-case.svg" },
@@ -196,6 +199,6 @@ export const site = {
 
   contact: {
     email: "piriyalapa@gmail.com",
-    linkedIn: "https://www.linkedin.com/in/PLACEHOLDER", // TODO: replace with real profile URL
+    linkedIn: "https://www.linkedin.com/in/piriya-lapa-75b6371b8",
   },
 }
