@@ -1,8 +1,16 @@
+import { useState } from "react"
 import { site } from "../content/site"
 import { QrCode } from "../components/QrCode"
 import type { ProjectContent } from "../content/site"
 
 function LumineCard({ project }: { project: ProjectContent }) {
+  const [showAllDiagrams, setShowAllDiagrams] = useState(false)
+  const hasCuration = project.diagrams?.some((d) => d.curated)
+  const visibleDiagrams =
+    hasCuration && !showAllDiagrams
+      ? project.diagrams?.filter((d) => d.curated)
+      : project.diagrams
+
   return (
     <section className="bg-surface-container-lowest border border-outline rounded-xl overflow-hidden flex flex-col md:flex-row">
       <div className="p-6 md:p-8 md:w-2/3 flex flex-col gap-6">
@@ -101,7 +109,7 @@ function LumineCard({ project }: { project: ProjectContent }) {
               Architecture Diagrams
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {project.diagrams.map((diagram) => (
+              {visibleDiagrams?.map((diagram) => (
                 <a
                   key={diagram.figure}
                   href={diagram.image}
@@ -126,9 +134,25 @@ function LumineCard({ project }: { project: ProjectContent }) {
                 </a>
               ))}
             </div>
-            <p className="mt-2 text-xs text-on-surface-variant">
-              Grounded in the current codebase — {site.diagramsTotalCount} diagrams shown, more in progress
-            </p>
+            <div className="mt-2 flex items-center justify-between">
+              <p className="text-xs text-on-surface-variant">
+                Grounded in the current codebase — {site.diagramsTotalCount} diagrams total
+              </p>
+              {hasCuration && (
+                <button
+                  type="button"
+                  onClick={() => setShowAllDiagrams((prev) => !prev)}
+                  className="font-annotation text-annotation text-tech-blue hover:text-primary transition-colors inline-flex items-center gap-1"
+                >
+                  {showAllDiagrams
+                    ? "Show fewer diagrams"
+                    : `View all ${site.diagramsTotalCount} diagrams`}
+                  <span className="material-symbols-outlined text-sm">
+                    {showAllDiagrams ? "expand_less" : "expand_more"}
+                  </span>
+                </button>
+              )}
+            </div>
           </div>
         )}
       </div>

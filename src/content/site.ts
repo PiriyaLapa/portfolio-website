@@ -19,7 +19,7 @@ export interface ProjectContent {
     srsPdf?: string
   }
   limitations?: string[]
-  diagrams?: { label: string; figure: string; image: string }[]
+  diagrams?: { label: string; figure: string; image: string; curated?: boolean }[]
   primary: boolean
 }
 
@@ -138,16 +138,25 @@ export const site = {
       limitations: [
         "Customer outreach itself (calls/messages) is currently done manually.",
       ],
+      // All 13 exported 2026-08-18 directly from the real, code-verified
+      // docs/diagrams/lumine_diagrams.drawio in the project-lumine repo (develop
+      // branch) — supersedes the 6-diagram Mermaid draft from earlier the same day
+      // (archived at public/content/diagrams/archive/2026-08-18-mermaid-notion-draft/).
+      // `curated: true` = shown by default; the rest sit behind "view all 13 diagrams".
       diagrams: [
-        { label: "Use Case Diagram", figure: "FIG. 1", image: "/content/diagrams/lumine-use-case.svg" },
-        { label: "ER Diagram", figure: "FIG. 2", image: "/content/diagrams/lumine-er-diagram.svg" },
-        { label: "System Architecture", figure: "FIG. 3", image: "/content/diagrams/lumine-architecture.svg" },
-        { label: "BPMN Process Flow", figure: "FIG. 4", image: "/content/diagrams/lumine-bpmn.svg" },
-        { label: "Sequence Diagram", figure: "FIG. 5", image: "/content/diagrams/lumine-sequence.svg" },
-        { label: "Data Flow Diagram", figure: "FIG. 6", image: "/content/diagrams/lumine-dfd.svg" },
-        // 6 of 6 diagrams currently verified against code (docs/diagrams source doesn't exist yet —
-        // rendered from Notion "Interview Diagram Prep" Mermaid source, 2026-08-18). Additional diagrams
-        // (Auto-Touch sequence, DFD Level 2 breakdowns) referenced in planning notes are not yet built.
+        { label: "Use Case Diagram", figure: "FIG. 1", image: "/content/diagrams/lumine-use-case.svg", curated: true },
+        { label: "System Architecture", figure: "FIG. 2", image: "/content/diagrams/lumine-architecture.svg", curated: true },
+        { label: "ER Diagram", figure: "FIG. 3", image: "/content/diagrams/lumine-er-diagram.svg", curated: true },
+        { label: "BPMN — 2-2-2 Lifecycle", figure: "FIG. 4", image: "/content/diagrams/lumine-bpmn.svg", curated: true },
+        { label: "Sequence Diagram", figure: "FIG. 5", image: "/content/diagrams/lumine-sequence-main.svg", curated: true },
+        { label: "Sequence — Auto-Touch", figure: "FIG. 6", image: "/content/diagrams/lumine-sequence-auto-touch.svg" },
+        { label: "DFD — Level 0 (Context)", figure: "FIG. 7", image: "/content/diagrams/lumine-dfd-level0.svg" },
+        { label: "DFD — Level 1", figure: "FIG. 8", image: "/content/diagrams/lumine-dfd-level1.svg" },
+        { label: "DFD L2 — Import SAP Data", figure: "FIG. 9", image: "/content/diagrams/lumine-dfd-l2-import-sap.svg" },
+        { label: "DFD L2 — Schedule Follow-ups", figure: "FIG. 10", image: "/content/diagrams/lumine-dfd-l2-schedule-followups.svg" },
+        { label: "DFD L2 — Complete Follow-up", figure: "FIG. 11", image: "/content/diagrams/lumine-dfd-l2-complete-followup.svg" },
+        { label: "DFD L2 — View Customer Profile", figure: "FIG. 12", image: "/content/diagrams/lumine-dfd-l2-view-customer-profile.svg" },
+        { label: "DFD L2 — Auto-Touch", figure: "FIG. 13", image: "/content/diagrams/lumine-dfd-l2-auto-touch.svg" },
       ],
       primary: true,
     },
@@ -179,7 +188,7 @@ export const site = {
     },
   ] as ProjectContent[],
 
-  diagramsTotalCount: 6,
+  diagramsTotalCount: 13,
 
   resume: {
     label: "Download Business Analyst Resume",
