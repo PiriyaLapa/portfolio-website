@@ -12,13 +12,14 @@ export interface ProjectContent {
     impact: string
   }
   metrics: string[]
+  techStack?: { category: string; items: string[] }[]
   links: {
     github?: string
     liveDemo?: string
     srsPdf?: string
   }
   limitations?: string[]
-  diagrams?: { label: string; figure: string }[]
+  diagrams?: { label: string; figure: string; image: string }[]
   primary: boolean
 }
 
@@ -59,6 +60,45 @@ export const site = {
     ],
   },
 
+  // Reviewed 2026-08-18: Node.js and "Sketchnoting & Visual Metaphor" were dropped
+  // from a Stitch-generated draft of this section — neither is evidenced in the
+  // Lumine/Paws & Pace stacks or anywhere else, so they didn't ship.
+  competencies: [
+    {
+      icon: "manage_search",
+      title: "Business Analysis",
+      items: [
+        "Requirements Gathering",
+        "SRS / DFD / ERD / Sequence Diagrams",
+        "Process Analysis & Optimization",
+        "Data Reconciliation",
+        "Stakeholder Communication",
+        "UAT & Sign-off",
+      ],
+    },
+    {
+      icon: "code",
+      title: "Technical Stack",
+      items: [
+        "React & React Native",
+        "TypeScript",
+        "Python & FastAPI",
+        "MySQL",
+        "AI-Assisted Development",
+      ],
+    },
+    {
+      icon: "groups",
+      title: "Core Soft Skills",
+      items: [
+        "Complex-to-Simple Explanation",
+        "English (Working Proficiency)",
+        "Thai (Native)",
+        "Problem Solving & Critical Thinking",
+      ],
+    },
+  ],
+
   projects: [
     {
       slug: "lumine",
@@ -76,8 +116,16 @@ export const site = {
       },
       metrics: [
         "331 tests passing",
-        "Deployed on Render",
-        "8 routers / 24 endpoints",
+        "8 routers configured",
+        "24 endpoints secured",
+        // "CI/CD Pipeline Active" appeared in a Stitch draft of this card — dropped,
+        // there's no .github/workflows in project-lumine (checked 2026-08-18).
+        "7 specialized AI agent roles (Architect, PM, QA, Dev, Security, DevOps, UX/UI)",
+      ],
+      techStack: [
+        { category: "Frontend", items: ["React Native", "Expo", "TypeScript"] },
+        { category: "Backend & DB", items: ["Python (FastAPI)", "SQLAlchemy", "MySQL"] },
+        { category: "Infrastructure", items: ["Render", "Google Drive API"] },
       ],
       links: {
         github: "https://github.com/PiriyaLapa/project-lumine",
@@ -88,24 +136,39 @@ export const site = {
         // TODO: pull 2-3 honest items from SRS_Lumine_v1_0_Current_State.md
       ],
       diagrams: [
-        { label: "ER Diagram", figure: "FIG. 1" },
-        { label: "BPMN Process", figure: "FIG. 2" },
-        { label: "Use Case Diagram", figure: "FIG. 3" },
-        // Remaining 9 of 13 diagrams: exported once docs/diagrams/lumine_diagrams.drawio is rendered
+        { label: "Use Case Diagram", figure: "FIG. 1", image: "/content/diagrams/lumine-use-case.svg" },
+        { label: "ER Diagram", figure: "FIG. 2", image: "/content/diagrams/lumine-er-diagram.svg" },
+        { label: "System Architecture", figure: "FIG. 3", image: "/content/diagrams/lumine-architecture.svg" },
+        { label: "BPMN Process Flow", figure: "FIG. 4", image: "/content/diagrams/lumine-bpmn.svg" },
+        { label: "Sequence Diagram", figure: "FIG. 5", image: "/content/diagrams/lumine-sequence.svg" },
+        { label: "Data Flow Diagram", figure: "FIG. 6", image: "/content/diagrams/lumine-dfd.svg" },
+        // 6 of 6 diagrams currently verified against code (docs/diagrams source doesn't exist yet —
+        // rendered from Notion "Interview Diagram Prep" Mermaid source, 2026-08-18). Additional diagrams
+        // (Auto-Touch sequence, DFD Level 2 breakdowns) referenced in planning notes are not yet built.
       ],
       primary: true,
     },
     {
       slug: "paws-and-pace",
       name: "Paws & Pace",
-      tagline: "Companion project",
-      status: "Active",
+      tagline: "GPS-driven fitness app with a virtual companion",
+      status: "Active build, daily use, built with a sibling as product owner",
+      // Real narrative pulled from the project's own CLAUDE.md (2026-08-18) — a
+      // Stitch draft of this card previously invented a "canine agility trainer"
+      // description that has nothing to do with the actual app.
       summary: {
-        problem: "",
-        solution: "",
-        impact: "",
+        problem:
+          "Fitness apps track steps and distance, but abstract numbers rarely keep people moving day after day.",
+        solution:
+          "A React Native app where a virtual cat's hunger and evolution are driven directly by real-world GPS activity — a time-decay game engine that turns movement into the thing keeping the cat alive.",
+        impact:
+          "In daily personal use, with a tested FastAPI backend and mobile app built alongside a sibling as product owner.",
       },
       metrics: ["116/116 backend tests passing", "113/113 mobile tests passing"],
+      techStack: [
+        { category: "Frontend", items: ["React Native", "Expo", "TypeScript"] },
+        { category: "Backend & DB", items: ["Python (FastAPI)", "TiDB"] },
+      ],
       links: {
         github: "https://github.com/PiriyaLapa/PawsAndPace",
       },
@@ -113,7 +176,7 @@ export const site = {
     },
   ] as ProjectContent[],
 
-  diagramsTotalCount: 13,
+  diagramsTotalCount: 6,
 
   resume: {
     label: "Download Business Analyst Resume",

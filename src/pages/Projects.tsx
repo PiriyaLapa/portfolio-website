@@ -4,64 +4,90 @@ import type { ProjectContent } from "../content/site"
 
 function LumineCard({ project }: { project: ProjectContent }) {
   return (
-    <section className="bg-surface-container-lowest border border-border-gray rounded-xl overflow-hidden flex flex-col md:flex-row">
-      <div className="p-8 md:w-2/3 flex flex-col gap-6">
+    <section className="bg-surface-container-lowest border border-outline rounded-xl overflow-hidden flex flex-col md:flex-row">
+      <div className="p-6 md:p-8 md:w-2/3 flex flex-col gap-6">
         <div className="flex justify-between items-start gap-4">
           <div>
-            <h2 className="font-headline-md text-headline-md text-primary mb-2">{project.name}</h2>
+            <h2 className="font-headline-md text-headline-md text-on-surface mb-2">{project.name}</h2>
             <div className="flex gap-2 items-center flex-wrap">
-              <span className="font-label-sm text-label-sm bg-surface-container text-on-surface px-2 py-1 border border-border-gray rounded">
+              <span className="font-annotation text-annotation bg-surface-container-low text-on-surface px-2 py-1 border border-outline rounded">
                 {project.tagline}
               </span>
-              <span className="font-label-sm text-label-sm text-text-muted border border-border-gray px-2 py-1 rounded border-dashed">
+              <span className="font-annotation text-annotation text-on-surface-variant border border-outline px-2 py-1 rounded border-dashed">
                 Status: {project.status}
               </span>
             </div>
           </div>
-          <span className="material-symbols-outlined text-tech-blue text-3xl">architecture</span>
+          <span className="material-symbols-outlined text-secondary text-3xl">architecture</span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="col-span-1 md:col-span-2">
-            <h3 className="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-2">
+            <h3 className="font-annotation text-annotation text-on-surface-variant uppercase tracking-widest mb-2">
               Summary
             </h3>
             <div className="flex flex-col gap-4">
               <div>
-                <span className="font-label-sm text-label-sm text-primary font-bold">Problem:</span>
-                <p className="text-secondary mt-1">{project.summary.problem}</p>
+                <span className="font-annotation text-annotation text-on-surface font-bold">Problem:</span>
+                <p className="text-on-surface-variant mt-1">{project.summary.problem}</p>
               </div>
               <div>
-                <span className="font-label-sm text-label-sm text-primary font-bold">Solution:</span>
-                <p className="text-secondary mt-1">{project.summary.solution}</p>
+                <span className="font-annotation text-annotation text-on-surface font-bold">Solution:</span>
+                <p className="text-on-surface-variant mt-1">{project.summary.solution}</p>
               </div>
               <div>
-                <span className="font-label-sm text-label-sm text-primary font-bold">Impact:</span>
-                <p className="text-secondary mt-1">{project.summary.impact}</p>
+                <span className="font-annotation text-annotation text-on-surface font-bold">Impact:</span>
+                <p className="text-on-surface-variant mt-1">{project.summary.impact}</p>
               </div>
             </div>
           </div>
-          <div className="bg-surface p-4 border border-border-gray rounded-lg flex flex-col gap-4">
-            <h3 className="font-label-sm text-label-sm text-secondary uppercase tracking-widest">
-              Technical Detail
-            </h3>
-            <ul className="flex flex-col gap-3">
-              {project.metrics.map((metric) => (
-                <li key={metric} className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-brand-emerald" />
-                  <span className="font-label-sm text-label-sm text-primary">{metric}</span>
-                </li>
-              ))}
-            </ul>
+          <div className="flex flex-col gap-4">
+            <div className="bg-surface-container-low p-4 border border-outline rounded-lg flex flex-col gap-4">
+              <h3 className="font-annotation text-annotation text-on-surface-variant uppercase tracking-widest">
+                Technical Detail
+              </h3>
+              <ul className="flex flex-col gap-3">
+                {project.metrics.map((metric) => (
+                  <li key={metric} className="flex items-start gap-2">
+                    <span className="w-2 h-2 rounded-full bg-primary-container mt-1.5 shrink-0" />
+                    <span className="font-annotation text-annotation text-on-surface">{metric}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            {project.techStack && project.techStack.length > 0 && (
+              <div className="bg-surface-container-low p-4 border border-outline rounded-lg flex flex-col gap-3">
+                <h3 className="font-annotation text-annotation text-on-surface-variant uppercase tracking-widest">
+                  Technology Stack
+                </h3>
+                {project.techStack.map((group) => (
+                  <div key={group.category}>
+                    <span className="font-annotation text-annotation text-on-surface-variant block mb-1">
+                      {group.category}
+                    </span>
+                    <div className="flex flex-wrap gap-1">
+                      {group.items.map((item) => (
+                        <span
+                          key={item}
+                          className="font-annotation text-annotation bg-surface-container-lowest border border-outline px-2 py-0.5 rounded"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
         {project.limitations && project.limitations.length > 0 && (
-          <div className="border-t border-border-gray pt-6">
-            <h3 className="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-2">
+          <div className="border-t border-outline pt-6">
+            <h3 className="font-annotation text-annotation text-on-surface-variant uppercase tracking-widest mb-2">
               Known Limitations
             </h3>
-            <ul className="list-disc list-inside text-secondary text-sm">
+            <ul className="list-disc list-inside text-on-surface-variant text-sm">
               {project.limitations.map((item) => (
                 <li key={item}>{item}</li>
               ))}
@@ -70,45 +96,46 @@ function LumineCard({ project }: { project: ProjectContent }) {
         )}
 
         {project.diagrams && project.diagrams.length > 0 && (
-          <div className="border-t border-border-gray pt-6 mt-2">
-            <h3 className="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-4">
+          <div className="border-t border-outline pt-6 mt-2">
+            <h3 className="font-annotation text-annotation text-on-surface-variant uppercase tracking-widest mb-4">
               Architecture Diagrams
             </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {project.diagrams.map((diagram) => (
-                <div
+                <a
                   key={diagram.figure}
-                  className="border border-border-gray bg-surface p-2 rounded relative"
+                  href={diagram.image}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="border border-outline bg-surface-container-low p-2 rounded relative block hover:border-primary transition-colors"
                 >
-                  <div className="w-full h-24 mb-2 rounded border border-dashed border-border-gray bg-surface-container-low flex items-center justify-center">
-                    <span className="material-symbols-outlined text-outline-variant text-3xl">
-                      schema
-                    </span>
+                  <div className="w-full h-40 mb-2 rounded border border-outline bg-white flex items-center justify-center overflow-hidden">
+                    <img
+                      src={diagram.image}
+                      alt={`${project.name} ${diagram.label}, verified against the live codebase`}
+                      loading="lazy"
+                      className="w-full h-full object-contain"
+                    />
                   </div>
-                  <p className="font-label-caps text-label-caps text-center text-text-muted">
+                  <p className="font-annotation text-annotation text-center text-on-surface-variant">
                     {diagram.label}
                   </p>
-                  <span className="font-label-caps text-label-caps absolute top-3 right-3 bg-surface-container-lowest px-1 border border-border-gray rounded text-text-muted">
+                  <span className="font-annotation text-annotation absolute top-3 right-3 bg-surface-container-lowest px-1 border border-outline rounded text-on-surface-variant uppercase">
                     {diagram.figure}
                   </span>
-                </div>
+                </a>
               ))}
             </div>
-            <p className="mt-2 text-xs text-text-muted">
-              Exported from the .drawio source — pending image export
+            <p className="mt-2 text-xs text-on-surface-variant">
+              Grounded in the current codebase — {site.diagramsTotalCount} diagrams shown, more in progress
             </p>
-            <div className="mt-4 text-right">
-              <span className="font-label-sm text-label-sm text-text-muted inline-flex items-center gap-1">
-                View all {site.diagramsTotalCount} diagrams (coming soon)
-              </span>
-            </div>
           </div>
         )}
       </div>
 
-      <div className="md:w-1/3 bg-surface border-t md:border-t-0 md:border-l border-border-gray p-8 flex flex-col justify-between">
+      <div className="md:w-1/3 bg-surface-container-low border-t md:border-t-0 md:border-l border-outline p-6 md:p-8 flex flex-col justify-between">
         <div className="flex flex-col gap-4">
-          <h3 className="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-2">
+          <h3 className="font-annotation text-annotation text-on-surface-variant uppercase tracking-widest mb-2">
             Project Resources
           </h3>
           {project.links.github && (
@@ -116,13 +143,13 @@ function LumineCard({ project }: { project: ProjectContent }) {
               href={project.links.github}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center justify-between w-full p-3 border border-border-gray rounded hover:border-tertiary transition-colors bg-surface-container-lowest group"
+              className="flex items-center justify-between w-full p-3 border border-outline rounded hover:border-primary transition-colors bg-surface-container-lowest group"
             >
-              <span className="font-label-sm text-label-sm text-primary font-bold flex items-center gap-2">
+              <span className="font-annotation text-annotation text-on-surface font-bold flex items-center gap-2">
                 <span className="material-symbols-outlined text-lg">code</span>
                 GitHub Repo
               </span>
-              <span className="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors text-sm">
+              <span className="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors text-sm">
                 open_in_new
               </span>
             </a>
@@ -132,13 +159,13 @@ function LumineCard({ project }: { project: ProjectContent }) {
               href={project.links.liveDemo}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center justify-between w-full p-3 border border-border-gray rounded hover:border-tertiary transition-colors bg-surface-container-lowest group"
+              className="flex items-center justify-between w-full p-3 border border-outline rounded hover:border-primary transition-colors bg-surface-container-lowest group"
             >
-              <span className="font-label-sm text-label-sm text-primary font-bold flex items-center gap-2">
+              <span className="font-annotation text-annotation text-on-surface font-bold flex items-center gap-2">
                 <span className="material-symbols-outlined text-lg">play_circle</span>
                 Live Demo
               </span>
-              <span className="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors text-sm">
+              <span className="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors text-sm">
                 open_in_new
               </span>
             </a>
@@ -146,14 +173,14 @@ function LumineCard({ project }: { project: ProjectContent }) {
           {project.links.srsPdf && (
             <a
               href={project.links.srsPdf}
-              className="mt-4 w-full bg-surface-container-lowest border border-tech-blue text-tech-blue font-label-sm text-label-sm py-3 px-4 rounded hover:bg-tech-blue hover:text-white transition-colors flex items-center justify-center gap-2"
+              className="mt-4 w-full bg-surface-container-lowest border border-secondary text-secondary font-annotation text-annotation py-3 px-4 rounded hover:bg-secondary hover:text-on-secondary transition-colors flex items-center justify-center gap-2"
             >
               <span className="material-symbols-outlined text-lg">download</span>
               Download SRS PDF
             </a>
           )}
         </div>
-        <div className="mt-8 pt-8 border-t border-border-gray flex justify-center">
+        <div className="mt-8 pt-8 border-t border-outline flex justify-center">
           <QrCode url={site.deployedUrl} caption="Scan to share this evidence hub" />
         </div>
       </div>
@@ -162,34 +189,56 @@ function LumineCard({ project }: { project: ProjectContent }) {
 }
 
 function SecondaryCard({ project }: { project: ProjectContent }) {
+  const hasNarrative = project.summary.solution.length > 0
+
   return (
-    <section className="bg-surface-container-lowest border border-border-gray rounded-xl overflow-hidden p-8 hover:border-text-muted transition-colors">
+    <section className="bg-surface-container-lowest border border-outline rounded-xl overflow-hidden p-6 md:p-8 hover:border-outline-variant transition-colors">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
         <div className="md:w-2/3">
           <div className="flex items-center gap-3 mb-3">
-            <h2 className="font-headline-md text-headline-md text-primary">{project.name}</h2>
-            <span className="font-label-caps text-label-caps bg-surface-container text-on-surface px-2 py-1 border border-border-gray rounded">
+            <h2 className="font-headline-md text-headline-md text-on-surface">{project.name}</h2>
+            <span className="font-annotation text-annotation bg-surface-container-low text-on-surface px-2 py-1 border border-outline rounded">
               Secondary Project
             </span>
           </div>
-          <div className="flex flex-wrap gap-2">
-            {project.metrics.map((metric) => (
-              <span
-                key={metric}
-                className="font-label-caps text-label-caps bg-surface-container px-2 py-1 border border-border-gray rounded"
-              >
-                {metric}
-              </span>
-            ))}
+          {hasNarrative && (
+            <p className="font-body-md text-body-md text-on-surface-variant">{project.summary.solution}</p>
+          )}
+          <div className="mt-4 flex flex-col gap-3">
+            {project.techStack && (
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="font-annotation text-annotation text-on-surface-variant uppercase tracking-widest">
+                  Stack:
+                </span>
+                {project.techStack.flatMap((group) => group.items).map((item) => (
+                  <span
+                    key={item}
+                    className="font-annotation text-annotation bg-surface-container-low border border-outline px-2 py-0.5 rounded"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            )}
+            <div className="flex flex-wrap gap-2">
+              {project.metrics.map((metric) => (
+                <span
+                  key={metric}
+                  className="font-annotation text-annotation bg-surface-container px-2 py-1 border border-outline rounded"
+                >
+                  {metric}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
-        <div className="flex flex-col gap-3 w-full md:w-auto">
+        <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
           {project.links.github && (
             <a
               href={project.links.github}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-surface-container-lowest border border-border-gray rounded font-label-sm text-label-sm text-primary hover:border-tertiary transition-colors"
+              className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-surface-container-lowest border border-outline rounded font-annotation text-annotation text-on-surface hover:border-primary transition-colors"
             >
               <span className="material-symbols-outlined text-base">code</span>
               View GitHub
@@ -206,12 +255,12 @@ export function Projects() {
   const secondary = site.projects.filter((p) => !p.primary)
 
   return (
-    <main className="flex-grow max-w-container-max mx-auto w-full px-margin-mobile md:px-gutter py-section-gap flex flex-col gap-section-gap">
+    <main className="flex-grow max-w-7xl mx-auto w-full px-margin-mobile md:px-margin-desktop py-12 md:py-20 flex flex-col gap-12 md:gap-20">
       <section>
-        <h1 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-stack-md">
+        <h1 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-4">
           Documented Solutions
         </h1>
-        <p className="font-body-lg text-body-lg text-secondary max-w-2xl">
+        <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
           A curated repository of technical projects, demonstrating end-to-end architecture,
           documented methodologies, and measurable impact.
         </p>
