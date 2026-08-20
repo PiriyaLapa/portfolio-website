@@ -194,11 +194,22 @@ export const site = {
       links: {
         github: "https://github.com/PiriyaLapa/PawsAndPace",
       },
+      // docs/diagrams/pawsandpace_diagrams.drawio in the PawsAndPace repo (develop
+      // branch) — 7 tabs, each verified against the live backend/mobile code on
+      // 2026-08-20. `curated: true` = shown by default; the rest sit behind
+      // "view all 7 diagrams".
+      diagrams: [
+        { label: "Use Case Diagram", figure: "FIG. 1", image: "/content/diagrams/pawsandpace-use-case.svg", curated: true },
+        { label: "System Architecture", figure: "FIG. 2", image: "/content/diagrams/pawsandpace-architecture.svg", curated: true },
+        { label: "ER Diagram", figure: "FIG. 3", image: "/content/diagrams/pawsandpace-er-diagram.svg", curated: true },
+        { label: "BPMN — Run Lifecycle", figure: "FIG. 4", image: "/content/diagrams/pawsandpace-bpmn.svg", curated: true },
+        { label: "Sequence — Save Activity", figure: "FIG. 5", image: "/content/diagrams/pawsandpace-sequence.svg" },
+        { label: "DFD — Level 0 (Context)", figure: "FIG. 6", image: "/content/diagrams/pawsandpace-dfd-level0.svg" },
+        { label: "DFD — Level 1", figure: "FIG. 7", image: "/content/diagrams/pawsandpace-dfd-level1.svg" },
+      ],
       primary: false,
     },
   ] as ProjectContent[],
-
-  diagramsTotalCount: 13,
 
   resume: {
     label: "Download Business Analyst Resume",

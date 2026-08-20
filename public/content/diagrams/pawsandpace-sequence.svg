@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1550 820" width="1550" height="820" font-family="Helvetica Neue,Arial,sans-serif">
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L7,3 z" fill="#333333"/></marker></defs>
+<rect x="0" y="0" width="1550" height="820" fill="#ffffff"/>
+<g transform="translate(100,50)">
+<path d="M 35.0 80.0 L 35.0 660.0" fill="none" stroke="#000000" stroke-width="1.3" stroke-dasharray="5,3"/>
+<path d="M 225.0 70.0 L 225.0 660.0" fill="none" stroke="#000000" stroke-width="1.3" stroke-dasharray="5,3"/>
+<path d="M 445.0 70.0 L 445.0 660.0" fill="none" stroke="#000000" stroke-width="1.3" stroke-dasharray="5,3"/>
+<path d="M 675.0 70.0 L 675.0 540.0" fill="none" stroke="#000000" stroke-width="1.3" stroke-dasharray="5,3"/>
+<path d="M 920.0 70.0 L 920.0 540.0" fill="none" stroke="#000000" stroke-width="1.3" stroke-dasharray="5,3"/>
+<path d="M 1150.0 70.0 L 1150.0 540.0" fill="none" stroke="#000000" stroke-width="1.3" stroke-dasharray="5,3"/>
+<path d="M 35.0 140.0 L 225.0 140.0" fill="none" stroke="#000000" stroke-width="1.3" marker-end="url(#arrow)"/>
+<rect x="20.3" y="122.0" width="219.4" height="36.0" fill="#ffffff" opacity="0.92"/>
+<text x="130.0" y="135.0" text-anchor="middle" font-size="11" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">1. End Run — GPS distance/duration</text>
+<text x="130.0" y="151.0" text-anchor="middle" font-size="11" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">computed on-device (haversine.ts)</text>
+<path d="M 225.0 180.0 L 445.0 180.0" fill="none" stroke="#000000" stroke-width="1.3" marker-end="url(#arrow)"/>
+<rect x="231.4" y="170.0" width="207.1" height="20.0" fill="#ffffff" opacity="0.92"/>
+<text x="335.0" y="183.0" text-anchor="middle" font-size="11" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">2. POST /activities (JWT Bearer)</text>
+<path d="M 445.0 220.0 L 445.0 220.0" fill="none" stroke="#000000" stroke-width="1.3" marker-end="url(#arrow)"/>
+<rect x="323.0" y="202.0" width="244.1" height="36.0" fill="#ffffff" opacity="0.92"/>
+<text x="445.0" y="215.0" text-anchor="middle" font-size="11" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">3. compute exp_earned, hunger_restored</text>
+<text x="445.0" y="231.0" text-anchor="middle" font-size="11" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">(config-driven rates)</text>
+<path d="M 445.0 260.0 L 675.0 260.0" fill="none" stroke="#000000" stroke-width="1.3" marker-end="url(#arrow)"/>
+<rect x="453.4" y="242.0" width="213.3" height="36.0" fill="#ffffff" opacity="0.92"/>
+<text x="560.0" y="255.0" text-anchor="middle" font-size="11" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">4. apply_hunger_decay(cat.hunger,</text>
+<text x="560.0" y="271.0" text-anchor="middle" font-size="11" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">last_decay, now)</text>
+<path d="M 675.0 295.0 L 445.0 295.0" fill="none" stroke="#000000" stroke-width="1.3" stroke-dasharray="5,3" marker-end="url(#arrow)"/>
+<rect x="453.4" y="285.0" width="213.3" height="20.0" fill="#ffffff" opacity="0.92"/>
+<text x="560.0" y="298.0" text-anchor="middle" font-size="11" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">5. decayed_hunger, new_last_decay</text>
+<path d="M 445.0 330.0 L 675.0 330.0" fill="none" stroke="#000000" stroke-width="1.3" marker-end="url(#arrow)"/>
+<rect x="444.1" y="304.0" width="231.8" height="52.0" fill="#ffffff" opacity="0.92"/>
+<text x="560.0" y="317.0" text-anchor="middle" font-size="11" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">6. new_hunger = min(100, decayed +</text>
+<text x="560.0" y="333.0" text-anchor="middle" font-size="11" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">restored); evaluate_phase(total_exp)</text>
+<text x="560.0" y="349.0" text-anchor="middle" font-size="11" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">before/after</text>
+<path d="M 445.0 365.0 L 675.0 365.0" fill="none" stroke="#000000" stroke-width="1.3" marker-end="url(#arrow)"/>
+<rect x="471.8" y="347.0" width="176.3" height="36.0" fill="#ffffff" opacity="0.92"/>
+<text x="560.0" y="360.0" text-anchor="middle" font-size="11" fill="#82b366" style="font-family:'Helvetica Neue',Arial,sans-serif">7. if evolution_occurred:</text>
+<text x="560.0" y="376.0" text-anchor="middle" font-size="11" fill="#82b366" style="font-family:'Helvetica Neue',Arial,sans-serif">gacha_roll(new_tier, forms)</text>
+<path d="M 675.0 400.0 L 445.0 400.0" fill="none" stroke="#000000" stroke-width="1.3" stroke-dasharray="5,3" marker-end="url(#arrow)"/>
+<rect x="484.2" y="382.0" width="151.7" height="36.0" fill="#ffffff" opacity="0.92"/>
+<text x="560.0" y="395.0" text-anchor="middle" font-size="11" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">8. new_form_id,</text>
+<text x="560.0" y="411.0" text-anchor="middle" font-size="11" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">derive_mood(new_hunger)</text>
+<path d="M 445.0 435.0 L 920.0 435.0" fill="none" stroke="#000000" stroke-width="1.3" marker-end="url(#arrow)"/>
+<rect x="560.5" y="417.0" width="244.1" height="36.0" fill="#ffffff" opacity="0.92"/>
+<text x="682.5" y="430.0" text-anchor="middle" font-size="11" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">9. activity_repo.create(activity_type,</text>
+<text x="682.5" y="446.0" text-anchor="middle" font-size="11" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">exp_earned, hunger_restored, ...)</text>
+<path d="M 445.0 465.0 L 920.0 465.0" fill="none" stroke="#000000" stroke-width="1.3" marker-end="url(#arrow)"/>
+<rect x="560.5" y="439.0" width="244.1" height="52.0" fill="#ffffff" opacity="0.92"/>
+<text x="682.5" y="452.0" text-anchor="middle" font-size="11" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">10. cat_repo.update(hunger, total_exp,</text>
+<text x="682.5" y="468.0" text-anchor="middle" font-size="11" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">current_form_id, mood,</text>
+<text x="682.5" y="484.0" text-anchor="middle" font-size="11" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">last_hunger_decay)</text>
+<path d="M 920.0 500.0 L 1150.0 500.0" fill="none" stroke="#000000" stroke-width="1.3" marker-end="url(#arrow)"/>
+<rect x="913.0" y="482.0" width="244.1" height="36.0" fill="#ffffff" opacity="0.92"/>
+<text x="1035.0" y="495.0" text-anchor="middle" font-size="11" fill="#b85450" style="font-family:'Helvetica Neue',Arial,sans-serif">11. INSERT activities row; UPDATE cats</text>
+<text x="1035.0" y="511.0" text-anchor="middle" font-size="11" fill="#b85450" style="font-family:'Helvetica Neue',Arial,sans-serif">row — single atomic commit</text>
+<path d="M 445.0 540.0 L 225.0 540.0" fill="none" stroke="#000000" stroke-width="1.3" stroke-dasharray="5,3" marker-end="url(#arrow)"/>
+<rect x="216.0" y="514.0" width="237.9" height="52.0" fill="#ffffff" opacity="0.92"/>
+<text x="335.0" y="527.0" text-anchor="middle" font-size="11" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">12. ActivitySaveResponse (exp_earned,</text>
+<text x="335.0" y="543.0" text-anchor="middle" font-size="11" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">new_hunger, evolution_occurred,</text>
+<text x="335.0" y="559.0" text-anchor="middle" font-size="11" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">new_form)</text>
+<path d="M 225.0 580.0 L 35.0 580.0" fill="none" stroke="#000000" stroke-width="1.3" stroke-dasharray="5,3" marker-end="url(#arrow)"/>
+<rect x="8.0" y="562.0" width="244.1" height="36.0" fill="#ffffff" opacity="0.92"/>
+<text x="130.0" y="575.0" text-anchor="middle" font-size="11" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">13. show Evolution screen (if evolved)</text>
+<text x="130.0" y="591.0" text-anchor="middle" font-size="11" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">or Dashboard</text>
+<circle cx="35.0" cy="30.0" r="10.0" fill="none" stroke="#000000" stroke-width="1.5"/>
+<line x1="35.0" y1="40.0" x2="35.0" y2="59.0" stroke="#000000" stroke-width="1.5"/>
+<line x1="20.0" y1="41.0" x2="50.0" y2="41.0" stroke="#000000" stroke-width="1.5"/>
+<line x1="35.0" y1="59.0" x2="20.0" y2="80.0" stroke="#000000" stroke-width="1.5"/>
+<line x1="35.0" y1="59.0" x2="50.0" y2="80.0" stroke="#000000" stroke-width="1.5"/>
+<text x="35.0" y="95.0" text-anchor="middle" font-size="11" font-weight="normal" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">User</text>
+<rect x="150.0" y="30.0" width="150.0" height="40.0" rx="0" ry="0" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.5"/>
+<text x="225.0" y="53.5" text-anchor="middle" font-size="12" font-weight="normal" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">Mobile App (Expo)</text>
+<rect x="370.0" y="30.0" width="150.0" height="40.0" rx="0" ry="0" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.5"/>
+<text x="445.0" y="45.0" text-anchor="middle" font-size="12" font-weight="normal" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">FastAPI Router</text>
+<text x="445.0" y="62.0" text-anchor="middle" font-size="12" font-weight="normal" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">(activities.py)</text>
+<rect x="590.0" y="30.0" width="170.0" height="40.0" rx="0" ry="0" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+<text x="675.0" y="53.5" text-anchor="middle" font-size="12" font-weight="normal" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">game_engine_service</text>
+<rect x="830.0" y="30.0" width="180.0" height="40.0" rx="0" ry="0" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5"/>
+<text x="920.0" y="36.5" text-anchor="middle" font-size="12" font-weight="normal" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">Repositories</text>
+<text x="920.0" y="53.5" text-anchor="middle" font-size="12" font-weight="normal" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">(cat_repo /</text>
+<text x="920.0" y="70.5" text-anchor="middle" font-size="12" font-weight="normal" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">activity_repo)</text>
+<rect x="1080.0" y="30.0" width="140.0" height="40.0" rx="0" ry="0" fill="#f5f5f5" stroke="#666666" stroke-width="1.5"/>
+<text x="1150.0" y="53.5" text-anchor="middle" font-size="12" font-weight="normal" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">TiDB Cloud</text>
+<text x="41.0" y="640.0" text-anchor="start" font-size="11" font-weight="normal" fill="#666666" style="font-family:'Helvetica Neue',Arial,sans-serif">Endpoint path, JWT dependency, lazy hunger-decay model (no cron/scheduler — decay is computed on next write), the 100-cap on hunger, and the single-commit</text>
+<text x="41.0" y="656.0" text-anchor="start" font-size="11" font-weight="normal" fill="#666666" style="font-family:'Helvetica Neue',Arial,sans-serif">atomicity verified 2026-08-20 against routers/activities.py, services/game_engine_service.py, config.py.</text>
+</g>
+</svg>

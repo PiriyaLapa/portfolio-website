@@ -3,14 +3,70 @@ import { site } from "../content/site"
 import { QrCode } from "../components/QrCode"
 import type { ProjectContent } from "../content/site"
 
-function LumineCard({ project }: { project: ProjectContent }) {
+function DiagramGallery({ project }: { project: ProjectContent }) {
   const [showAllDiagrams, setShowAllDiagrams] = useState(false)
   const hasCuration = project.diagrams?.some((d) => d.curated)
   const visibleDiagrams =
     hasCuration && !showAllDiagrams
       ? project.diagrams?.filter((d) => d.curated)
       : project.diagrams
+  const totalCount = project.diagrams?.length ?? 0
 
+  if (!project.diagrams || project.diagrams.length === 0) return null
+
+  return (
+    <div className="border-t border-outline pt-6 mt-2">
+      <h3 className="font-annotation text-annotation text-on-surface-variant uppercase tracking-widest mb-4">
+        Architecture Diagrams
+      </h3>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {visibleDiagrams?.map((diagram) => (
+          <a
+            key={diagram.figure}
+            href={diagram.image}
+            target="_blank"
+            rel="noreferrer"
+            className="border border-outline bg-surface-container-low p-2 rounded relative block hover:border-primary transition-colors"
+          >
+            <div className="w-full h-40 mb-2 rounded border border-outline bg-white flex items-center justify-center overflow-hidden">
+              <img
+                src={diagram.image}
+                alt={`${project.name} ${diagram.label}, verified against the live codebase`}
+                loading="lazy"
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <p className="font-annotation text-annotation text-center text-on-surface-variant">
+              {diagram.label}
+            </p>
+            <span className="font-annotation text-annotation absolute top-3 right-3 bg-surface-container-lowest px-1 border border-outline rounded text-on-surface-variant uppercase">
+              {diagram.figure}
+            </span>
+          </a>
+        ))}
+      </div>
+      <div className="mt-2 flex items-center justify-between">
+        <p className="text-xs text-on-surface-variant">
+          Grounded in the current codebase — {totalCount} diagrams total
+        </p>
+        {hasCuration && (
+          <button
+            type="button"
+            onClick={() => setShowAllDiagrams((prev) => !prev)}
+            className="font-annotation text-annotation text-tech-blue hover:text-primary transition-colors inline-flex items-center gap-1"
+          >
+            {showAllDiagrams ? "Show fewer diagrams" : `View all ${totalCount} diagrams`}
+            <span className="material-symbols-outlined text-sm">
+              {showAllDiagrams ? "expand_less" : "expand_more"}
+            </span>
+          </button>
+        )}
+      </div>
+    </div>
+  )
+}
+
+function LumineCard({ project }: { project: ProjectContent }) {
   return (
     <section className="bg-surface-container-lowest border border-outline rounded-xl overflow-hidden flex flex-col md:flex-row">
       <div className="p-6 md:p-8 md:w-2/3 flex flex-col gap-6">
@@ -137,58 +193,7 @@ function LumineCard({ project }: { project: ProjectContent }) {
           </div>
         )}
 
-        {project.diagrams && project.diagrams.length > 0 && (
-          <div className="border-t border-outline pt-6 mt-2">
-            <h3 className="font-annotation text-annotation text-on-surface-variant uppercase tracking-widest mb-4">
-              Architecture Diagrams
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {visibleDiagrams?.map((diagram) => (
-                <a
-                  key={diagram.figure}
-                  href={diagram.image}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="border border-outline bg-surface-container-low p-2 rounded relative block hover:border-primary transition-colors"
-                >
-                  <div className="w-full h-40 mb-2 rounded border border-outline bg-white flex items-center justify-center overflow-hidden">
-                    <img
-                      src={diagram.image}
-                      alt={`${project.name} ${diagram.label}, verified against the live codebase`}
-                      loading="lazy"
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
-                  <p className="font-annotation text-annotation text-center text-on-surface-variant">
-                    {diagram.label}
-                  </p>
-                  <span className="font-annotation text-annotation absolute top-3 right-3 bg-surface-container-lowest px-1 border border-outline rounded text-on-surface-variant uppercase">
-                    {diagram.figure}
-                  </span>
-                </a>
-              ))}
-            </div>
-            <div className="mt-2 flex items-center justify-between">
-              <p className="text-xs text-on-surface-variant">
-                Grounded in the current codebase — {site.diagramsTotalCount} diagrams total
-              </p>
-              {hasCuration && (
-                <button
-                  type="button"
-                  onClick={() => setShowAllDiagrams((prev) => !prev)}
-                  className="font-annotation text-annotation text-tech-blue hover:text-primary transition-colors inline-flex items-center gap-1"
-                >
-                  {showAllDiagrams
-                    ? "Show fewer diagrams"
-                    : `View all ${site.diagramsTotalCount} diagrams`}
-                  <span className="material-symbols-outlined text-sm">
-                    {showAllDiagrams ? "expand_less" : "expand_more"}
-                  </span>
-                </button>
-              )}
-            </div>
-          </div>
-        )}
+        <DiagramGallery project={project} />
       </div>
 
       <div className="md:w-1/3 bg-surface-container-low border-t md:border-t-0 md:border-l border-outline p-6 md:p-8 flex flex-col justify-between">
@@ -304,6 +309,7 @@ function SecondaryCard({ project }: { project: ProjectContent }) {
           )}
         </div>
       </div>
+      <DiagramGallery project={project} />
     </section>
   )
 }
