@@ -108,12 +108,12 @@ export const site = {
       name: "Lumine",
       tagline: "Evidence-based CRM for luxury retail sales associates",
       status:
-        "Internal initiative proposed to Hugo Boss leadership, MVP/pilot stage, self-dogfooding daily",
+        "Self-initiated productivity tool, informally discussed with my manager — MVP/pilot stage, in active use",
       summary: {
         problem:
           "Retail sales associates lack a structured way to track client follow-up, so relationship-driven sales opportunities fall through the cracks.",
         solution:
-          "A CRM built around the SAP + 2-2-2 follow-up framework, automating reminders and client history.",
+          "A CRM built around a tiered follow-up cadence (near-term, mid-term, long-term touchpoints) that leadership wanted the team to follow — I noticed the team struggling to execute it consistently and independently designed a tool to automate reminders and client history on top of the store's SAP sales data.",
         impact:
           "Deployed and in daily self-use, with a fully tested backend supporting the mobile app.",
       },
@@ -147,7 +147,7 @@ export const site = {
         { label: "Use Case Diagram", figure: "FIG. 1", image: "/content/diagrams/lumine-use-case.svg", curated: true },
         { label: "System Architecture", figure: "FIG. 2", image: "/content/diagrams/lumine-architecture.svg", curated: true },
         { label: "ER Diagram", figure: "FIG. 3", image: "/content/diagrams/lumine-er-diagram.svg", curated: true },
-        { label: "BPMN — 2-2-2 Lifecycle", figure: "FIG. 4", image: "/content/diagrams/lumine-bpmn.svg", curated: true },
+        { label: "BPMN — Tiered Follow-up Lifecycle", figure: "FIG. 4", image: "/content/diagrams/lumine-bpmn.svg", curated: true },
         { label: "Sequence Diagram", figure: "FIG. 5", image: "/content/diagrams/lumine-sequence-main.svg", curated: true },
         { label: "Sequence — Auto-Touch", figure: "FIG. 6", image: "/content/diagrams/lumine-sequence-auto-touch.svg" },
         { label: "DFD — Level 0 (Context)", figure: "FIG. 7", image: "/content/diagrams/lumine-dfd-level0.svg" },

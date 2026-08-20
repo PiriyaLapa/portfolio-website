@@ -13,9 +13,9 @@ Business Analyst with a full-stack technical background (React/React Native, Typ
 ### Senior Sales Associate | Hugo Boss
 *June 2022 – Present*
 
-- Identified a productivity gap in customer follow-ups; gathered requirements and proposed an internal tool to store leadership — owned requirement analysis and process design for Lumine, a CRM automation tool for the sales team.
+- Noticed the sales team struggling to keep up with leadership's customer follow-up goals; informally discussed the idea with my manager, then independently owned requirement analysis and process design to build Lumine, a CRM automation tool for the team.
 - Manually reconcile daily store sales data against the company's SAP system — a repetitive, error-prone data reconciliation process that directly informed the automation logic and data validation rules built into Lumine.
-- Built first-hand expertise in customer retention and follow-up behavior in a high-touch retail environment, translated directly into Lumine's 2-2-2 follow-up framework and business rules.
+- Built first-hand expertise in customer retention and follow-up behavior in a high-touch retail environment, translated directly into Lumine's tiered follow-up framework and business rules.
 - Bring 10+ years of combined sales and customer-service experience, consistently translating business needs into requirements that both stakeholders and technical teams trust.
 
 ### Backend Developer (Project-based) | Transcode
@@ -42,10 +42,10 @@ Business Analyst with a full-stack technical background (React/React Native, Typ
 ## PROJECTS
 
 ### Lumine
-*Internal sales-team productivity tool, proposed to and known by store leadership — MVP/pilot stage, in active use*
+*Self-initiated productivity tool, informally discussed with my manager — MVP/pilot stage, in active use*
 
 - **Problem**: Sales associates in luxury retail routinely lose track of post-purchase customer follow-ups, directly impacting repeat sales.
-- **Requirement analysis**: Owned full requirement-gathering and system design process — wrote SRS, designed DFD, ERD, and Sequence diagrams, and defined the 2-2-2 follow-up business rules (2 days, 2 weeks, 2 months post-purchase) from stakeholder input.
+- **Requirement analysis**: Owned full requirement-gathering and system design process — wrote SRS, designed DFD, ERD, and Sequence diagrams, and translated leadership's tiered follow-up cadence into concrete system logic and business rules.
 - **Solution**: Specified and directed the build of a CRM app that imports customer purchase data from SAP exports (Excel), validates and reconciles it against business rules, and surfaces daily "who to contact today" reminders on a mobile app.
 - **Process**: Ran sprint planning, defined Git branch strategy, and directed multiple AI coding agents against defined tasks per branch, with review, UAT-style testing, and sign-off at each stage. AI wrote the code; requirements, architecture, and QA decisions stayed fully owned by me.
 - **Engineering rigor**: Structured the build around 7 specialized AI agent roles (Architect, PM, QA, Developer, Security, DevOps, UX/UI) with a written sprint backlog and a blocking pre-sprint gate; QA wrote tests before Developer implemented (TDD) — 326 automated backend tests passing at 100% service coverage.
