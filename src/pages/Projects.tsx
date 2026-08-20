@@ -103,6 +103,40 @@ function LumineCard({ project }: { project: ProjectContent }) {
           </div>
         )}
 
+        {project.mockups && project.mockups.length > 0 && (
+          <div className="border-t border-outline pt-6 mt-2">
+            <h3 className="font-annotation text-annotation text-on-surface-variant uppercase tracking-widest mb-4">
+              UX/UI Design
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {project.mockups.map((mockup) => (
+                <a
+                  key={mockup.figure}
+                  href={mockup.image}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="border border-outline bg-surface-container-low p-2 rounded relative block hover:border-primary transition-colors"
+                >
+                  <div className="w-full h-40 mb-2 rounded border border-outline bg-white flex items-center justify-center overflow-hidden">
+                    <img
+                      src={mockup.image}
+                      alt={`${project.name} ${mockup.label} interface mockup`}
+                      loading="lazy"
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  <p className="font-annotation text-annotation text-center text-on-surface-variant">
+                    {mockup.label}
+                  </p>
+                  <span className="font-annotation text-annotation absolute top-3 right-3 bg-surface-container-lowest px-1 border border-outline rounded text-on-surface-variant uppercase">
+                    {mockup.figure}
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+
         {project.diagrams && project.diagrams.length > 0 && (
           <div className="border-t border-outline pt-6 mt-2">
             <h3 className="font-annotation text-annotation text-on-surface-variant uppercase tracking-widest mb-4">

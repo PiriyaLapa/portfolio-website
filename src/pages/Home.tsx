@@ -8,6 +8,9 @@ export function Home() {
       {/* Hero */}
       <section className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center mb-24">
         <div className="md:col-span-8 flex flex-col items-start justify-center space-y-6">
+          <h3 className="font-annotation text-annotation text-on-surface-variant uppercase tracking-widest border-b border-outline pb-2 inline-block">
+            01 // Identity
+          </h3>
           <div className="inline-flex items-center px-3 py-1 bg-surface-container-low border border-outline rounded-full">
             <span className="w-2 h-2 rounded-full bg-primary-container mr-2" />
             <span className="font-annotation text-annotation text-on-surface-variant uppercase">
@@ -54,46 +57,15 @@ export function Home() {
                 <span className="font-headline-lg text-headline-lg text-outline">PL</span>
               </div>
             )}
-            <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur px-3 py-2 border border-outline flex justify-between items-center">
-              <span className="font-annotation text-annotation text-on-surface">{site.hero.idTag}</span>
-              <span className="font-annotation text-annotation text-on-surface-variant">VERIFIED</span>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* Technical Competencies */}
-      <section className="mb-24">
-        <h3 className="font-annotation text-annotation text-on-surface-variant mb-8 uppercase tracking-widest border-b border-outline pb-2 inline-block">
-          02 // Technical Competencies
-        </h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {site.competencies.map((group) => (
-            <div key={group.title} className="bg-surface-container-lowest border border-outline p-6 flex flex-col">
-              <div className="flex items-center mb-6">
-                <span className="material-symbols-outlined text-brand-emerald mr-3 text-3xl">
-                  {group.icon}
-                </span>
-                <h4 className="font-headline-sm text-headline-sm text-on-surface">{group.title}</h4>
-              </div>
-              <ul className="space-y-3">
-                {group.items.map((item) => (
-                  <li key={item} className="flex items-center font-annotation text-annotation text-on-surface-variant">
-                    <span className="w-1.5 h-1.5 rounded-full bg-brand-emerald mr-2" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* About */}
+      {/* About / Career Trajectory */}
       <section className="mb-24 grid grid-cols-1 lg:grid-cols-12 gap-12">
         <div className="lg:col-span-4">
           <h3 className="font-annotation text-annotation text-on-surface-variant mb-2 uppercase tracking-widest border-b border-outline pb-2 inline-block">
-            03 // Career Trajectory
+            02 // Career Trajectory
           </h3>
           <h2 className="font-headline-md text-headline-md text-on-surface mt-4">
             The Evolution of an Analyst
@@ -128,6 +100,33 @@ export function Home() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Technical Competencies */}
+      <section className="mb-24">
+        <h3 className="font-annotation text-annotation text-on-surface-variant mb-8 uppercase tracking-widest border-b border-outline pb-2 inline-block">
+          03 // Technical Competencies
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {site.competencies.map((group) => (
+            <div key={group.title} className="bg-surface-container-lowest border border-outline p-6 flex flex-col">
+              <div className="flex items-center mb-6">
+                <span className="material-symbols-outlined text-brand-emerald mr-3 text-3xl">
+                  {group.icon}
+                </span>
+                <h4 className="font-headline-sm text-headline-sm text-on-surface">{group.title}</h4>
+              </div>
+              <ul className="space-y-3">
+                {group.items.map((item) => (
+                  <li key={item} className="flex items-center font-annotation text-annotation text-on-surface-variant">
+                    <span className="w-1.5 h-1.5 rounded-full bg-brand-emerald mr-2" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </section>
 

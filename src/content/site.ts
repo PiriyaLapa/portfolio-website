@@ -20,6 +20,10 @@ export interface ProjectContent {
   }
   limitations?: string[]
   diagrams?: { label: string; figure: string; image: string; curated?: boolean }[]
+  // UX/UI mockup gallery (FR-4-adjacent) — populate once Stitch mockup images
+  // (Login, Register, Tasks Dashboard, Summary Dashboard, Upload Purchase)
+  // are exported as files; renders nothing until then.
+  mockups?: { label: string; figure: string; image: string }[]
   primary: boolean
 }
 
@@ -31,15 +35,21 @@ export const site = {
     role: "Business Analyst / System Analyst",
     tagline: "Transforming retail experience into engineered analytical solutions.",
     statusBadge: "SYSTEM STATUS: READY FOR DEPLOYMENT",
-    idTag: "ID: PL-8092",
     photoUrl: "/content/Profile_image_Piriya.jpg" as string | null,
   },
 
   about: {
     docRef: "DOC REF: AB-101",
+    // Rewritten 2026-08-20 to a first-person narrative beat structure (Moment
+    // → Friction → Pivot → Method → bridge to evidence) per Benz's direction —
+    // replacing the earlier formal "My trajectory is defined by..." framing.
+    // Kept anchored to the corrected Lumine narrative: leadership set a general
+    // follow-up goal, not a formal commission — see git history for the
+    // confidentiality-driven rewrite this follows.
     statement: [
-      "My trajectory is defined by a continuous drive to bridge user needs with technical execution. Beginning with over 9 years of frontline retail sales experience, I developed an acute understanding of customer behavior, pain points, and operational bottlenecks. Recognizing the transformative power of technology, I transitioned into a self-taught developer role, acquiring the foundational logic to build solutions.",
-      "Today, I synthesize these dual perspectives as an AI-assisted Business and System Analyst. I leverage my retail empathy alongside technical acumen to engineer analytical solutions that are not only robust but inherently user-centric, translating complex business requirements into actionable system architectures.",
+      "A customer buys something on the sales floor, says thanks, and walks out — and more often than not, no one ever follows up. I watched that happen for nine years, alongside the daily grind of reconciling sales data by hand and watching promising leads quietly go cold.",
+      "Leadership wanted the team to follow up with customers more consistently — a good goal that was hard to actually execute by hand, day after day. Rather than wait for someone else to fix it, I taught myself to build the fix: I own the full system — requirements, architecture, QA — and direct AI agents, seven specialized roles working disciplined sprints, tests written before code, to build to that spec.",
+      "None of this is just a claim — here's the proof, step by step.",
     ],
     strengths: [
       {
