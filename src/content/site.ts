@@ -24,6 +24,19 @@ export interface ProjectContent {
   // (Login, Register, Tasks Dashboard, Summary Dashboard, Upload Purchase)
   // are exported as files; renders nothing until then.
   mockups?: { label: string; figure: string; image: string }[]
+  // Material Symbol name shown in the project card header.
+  headerIcon: string
+  // Real production screenshots — renders nothing until populated. Do not
+  // fill with placeholder/AI-generated imagery; only actual app screenshots.
+  uiScreenshots?: { label: string; caption: string; image: string }[]
+  // Pairs a diagram with the real screen it produces — renders nothing until
+  // populated, same rule as uiScreenshots.
+  logicVsLive?: {
+    label: string
+    diagramImage: string
+    screenshotImage: string
+    caption: string
+  }[]
   primary: boolean
 }
 
@@ -148,6 +161,7 @@ export const site = {
       limitations: [
         "Customer outreach itself (calls/messages) is currently done manually.",
       ],
+      headerIcon: "architecture",
       // All 13 exported 2026-08-18 directly from the real, code-verified
       // docs/diagrams/lumine_diagrams.drawio in the project-lumine repo (develop
       // branch) — supersedes the 6-diagram Mermaid draft from earlier the same day
@@ -187,6 +201,7 @@ export const site = {
           "In daily personal use, with a tested FastAPI backend and mobile app built alongside a sibling as product owner.",
       },
       metrics: ["116/116 backend tests passing", "113/113 mobile tests passing"],
+      headerIcon: "pets",
       techStack: [
         { category: "Frontend", items: ["React Native", "Expo", "TypeScript"] },
         { category: "Backend & DB", items: ["Python (FastAPI)", "TiDB"] },
