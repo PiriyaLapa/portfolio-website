@@ -182,6 +182,18 @@ export const site = {
         { label: "DFD L2 — View Customer Profile", figure: "FIG. 12", image: "/content/diagrams/lumine-dfd-l2-view-customer-profile.svg" },
         { label: "DFD L2 — Auto-Touch", figure: "FIG. 13", image: "/content/diagrams/lumine-dfd-l2-auto-touch.svg" },
       ],
+      // Real screenshots, captured 2026-08-21 from the actual app running against a
+      // seeded local dev backend (not mockups/AI-generated art — see the commit that
+      // scaffolded this component for why that distinction matters here).
+      uiScreenshots: [
+        { label: "Login", caption: "JWT-authenticated sign-in — role is always determined server-side, never client-submitted.", image: "/content/screenshots/lumine-login.png" },
+        { label: "Dashboard", caption: "Today's 2-2-2 follow-up queue, scoped to the signed-in associate's own customers.", image: "/content/screenshots/lumine-dashboard.png" },
+        { label: "Task Detail", caption: "Single follow-up task — customer, due window, and the Mark as Done / Log Evidence actions.", image: "/content/screenshots/lumine-task-detail.png" },
+        { label: "Evidence Logging", caption: "Photo + note captured against a task, required to close out a follow-up.", image: "/content/screenshots/lumine-evidence.png" },
+        { label: "Customer Profile", caption: "Store-wide customer 360 — full purchase and follow-up history, any staff member in the store.", image: "/content/screenshots/lumine-customer-profile.png" },
+        { label: "Auto-Touch Queue", caption: "AI-drafted outreach queued for customers with no contact channel or an overdue touch.", image: "/content/screenshots/lumine-auto-touch.png" },
+        { label: "Follow-Up Report", caption: "KPI dashboard — associates see their own stats, managers see the full per-staff breakdown.", image: "/content/screenshots/lumine-followup-dashboard.png" },
+      ],
       primary: true,
     },
     {
