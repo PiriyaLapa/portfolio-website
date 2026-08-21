@@ -67,33 +67,101 @@ function DiagramGallery({ project }: { project: ProjectContent }) {
 }
 
 function ProductionGallery({ project }: { project: ProjectContent }) {
-  if (!project.uiScreenshots || project.uiScreenshots.length === 0) return null
+  const [activeIndex, setActiveIndex] = useState(0)
+  const shots = project.uiScreenshots
+
+  if (!shots || shots.length === 0) return null
+
+  const total = shots.length
+  const hasMultiple = total > 1
+  const prevIndex = (activeIndex - 1 + total) % total
+  const nextIndex = (activeIndex + 1) % total
+  const active = shots[activeIndex]
 
   return (
     <div className="border-t border-outline pt-6 mt-2">
       <h3 className="font-annotation text-annotation text-on-surface-variant uppercase tracking-widest mb-4">
         Production Gallery
       </h3>
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        {project.uiScreenshots.map((shot) => (
-          <div
-            key={shot.label}
-            className="border border-outline bg-surface-container-low rounded p-3"
-          >
-            <div className="aspect-[9/16] bg-surface-container-highest rounded border border-outline mb-3 overflow-hidden">
-              <img
-                src={shot.image}
-                alt={`${project.name} ${shot.label} screenshot`}
-                loading="lazy"
-                className="w-full h-full object-cover"
-              />
+      <div className="relative">
+        <div className="flex items-center justify-center gap-4 py-4">
+          {hasMultiple && (
+            <div className="hidden md:block w-1/4 opacity-40 scale-90 transition-all duration-300">
+              <div className="aspect-[9/16] bg-surface-container-highest rounded-lg border border-outline overflow-hidden">
+                <img
+                  src={shots[prevIndex].image}
+                  alt={`${project.name} ${shots[prevIndex].label} screenshot preview`}
+                  loading="lazy"
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </div>
-            <p className="font-annotation text-annotation text-on-surface font-bold mb-1">
-              {shot.label}
-            </p>
-            <p className="text-xs text-on-surface-variant leading-tight">{shot.caption}</p>
+          )}
+          <div className="w-full md:w-1/2">
+            <div className="border border-outline bg-surface-container-low rounded-xl p-4">
+              <div className="aspect-[9/16] bg-surface-container-highest rounded-lg border border-outline mb-3 overflow-hidden">
+                <img
+                  src={active.image}
+                  alt={`${project.name} ${active.label} screenshot`}
+                  loading="lazy"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <p className="font-annotation text-annotation text-on-surface font-bold mb-1 text-center">
+                {active.label}
+              </p>
+              <p className="text-xs text-on-surface-variant leading-tight text-center">
+                {active.caption}
+              </p>
+            </div>
           </div>
-        ))}
+          {hasMultiple && (
+            <div className="hidden md:block w-1/4 opacity-40 scale-90 transition-all duration-300">
+              <div className="aspect-[9/16] bg-surface-container-highest rounded-lg border border-outline overflow-hidden">
+                <img
+                  src={shots[nextIndex].image}
+                  alt={`${project.name} ${shots[nextIndex].label} screenshot preview`}
+                  loading="lazy"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          )}
+        </div>
+
+        {hasMultiple && (
+          <>
+            <button
+              type="button"
+              onClick={() => setActiveIndex(prevIndex)}
+              aria-label="Previous screenshot"
+              className="absolute left-0 top-1/2 -translate-y-1/2 bg-surface-container-lowest/80 border border-outline p-2 rounded-full text-primary hover:bg-primary hover:text-on-primary transition-colors"
+            >
+              <span className="material-symbols-outlined">chevron_left</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveIndex(nextIndex)}
+              aria-label="Next screenshot"
+              className="absolute right-0 top-1/2 -translate-y-1/2 bg-surface-container-lowest/80 border border-outline p-2 rounded-full text-primary hover:bg-primary hover:text-on-primary transition-colors"
+            >
+              <span className="material-symbols-outlined">chevron_right</span>
+            </button>
+            <div className="flex justify-center gap-2 mt-4">
+              {shots.map((shot, i) => (
+                <button
+                  key={shot.label}
+                  type="button"
+                  onClick={() => setActiveIndex(i)}
+                  aria-label={`Show ${shot.label}`}
+                  className={`w-2 h-2 rounded-full transition-colors ${
+                    i === activeIndex ? "bg-primary" : "bg-outline"
+                  }`}
+                />
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </div>
   )
