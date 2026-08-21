@@ -234,6 +234,20 @@ export const site = {
         { label: "DFD — Level 0 (Context)", figure: "FIG. 6", image: "/content/diagrams/pawsandpace-dfd-level0.svg" },
         { label: "DFD — Level 1", figure: "FIG. 7", image: "/content/diagrams/pawsandpace-dfd-level1.svg" },
       ],
+      // Real screenshots, captured 2026-08-21 from the actual app running against a
+      // freshly seeded local dev backend (Expo Go, not mockups/AI-generated art).
+      // RunMapScreen and CountdownScreen are intentionally omitted — this session's
+      // AVD had a Google Play Services fused-location delivery issue (confirmed via
+      // dumpsys: raw GPS provider updated correctly, but never reached the app),
+      // so no real GPS route data was ever produced to screenshot.
+      uiScreenshots: [
+        { label: "Register", caption: "Account creation — a fresh cat is waiting the moment you sign up.", image: "/content/screenshots/pawsandpace-register.png" },
+        { label: "Login", caption: "Returning sign-in — your cat's state persists between sessions.", image: "/content/screenshots/pawsandpace-login.png" },
+        { label: "Active Run", caption: "Live run tracking — GPS-driven distance, time, pace, and calories.", image: "/content/screenshots/pawsandpace-run-active.png" },
+        { label: "Run Complete", caption: "Post-run summary — distance, time, calories, and EXP earned feed straight into the cat's growth.", image: "/content/screenshots/pawsandpace-run-complete.png" },
+        { label: "Evolution", caption: "Crossing an EXP tier triggers a real evolution — Kitten → Adult → Champion → Legend, each with weighted-random rarity.", image: "/content/screenshots/pawsandpace-evolution.png" },
+        { label: "Dashboard", caption: "The cat's home screen — tier, EXP progress, hunger, and mood, all driven by real activity data.", image: "/content/screenshots/pawsandpace-dashboard.png" },
+      ],
       primary: false,
     },
   ] as ProjectContent[],
