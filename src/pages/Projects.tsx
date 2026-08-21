@@ -3,7 +3,7 @@ import { site } from "../content/site"
 import { QrCode } from "../components/QrCode"
 import type { ProjectContent } from "../content/site"
 
-function DiagramGallery({ project }: { project: ProjectContent }) {
+export function DiagramGallery({ project }: { project: ProjectContent }) {
   const [showAllDiagrams, setShowAllDiagrams] = useState(false)
   const hasCuration = project.diagrams?.some((d) => d.curated)
   const visibleDiagrams =
@@ -66,7 +66,7 @@ function DiagramGallery({ project }: { project: ProjectContent }) {
   )
 }
 
-function ProductionGallery({ project }: { project: ProjectContent }) {
+export function ProductionGallery({ project }: { project: ProjectContent }) {
   const [activeIndex, setActiveIndex] = useState(0)
   const shots = project.uiScreenshots
 
@@ -167,7 +167,7 @@ function ProductionGallery({ project }: { project: ProjectContent }) {
   )
 }
 
-function LogicVsLive({ project }: { project: ProjectContent }) {
+export function LogicVsLive({ project }: { project: ProjectContent }) {
   if (!project.logicVsLive || project.logicVsLive.length === 0) return null
 
   return (
@@ -229,7 +229,7 @@ function LogicVsLive({ project }: { project: ProjectContent }) {
   )
 }
 
-function ProjectResourceLinks({
+export function ProjectResourceLinks({
   links,
   variant,
 }: {
