@@ -229,6 +229,63 @@ function LogicVsLive({ project }: { project: ProjectContent }) {
   )
 }
 
+function ProjectResourceLinks({
+  links,
+  variant,
+}: {
+  links: ProjectContent["links"]
+  variant: "sidebar" | "compact"
+}) {
+  if (!links.github && !links.liveDemo && !links.srsPdf) return null
+
+  const buttonClass =
+    variant === "sidebar"
+      ? "flex items-center justify-between w-full p-3 border border-outline rounded hover:border-primary transition-colors bg-surface-container-lowest group"
+      : "inline-flex items-center justify-center gap-2 px-4 py-2 bg-surface-container-lowest border border-outline rounded font-annotation text-annotation text-on-surface hover:border-primary transition-colors"
+
+  return (
+    <div className={variant === "sidebar" ? "flex flex-col gap-4" : "flex flex-col gap-2 w-full md:w-auto"}>
+      <h3 className="font-annotation text-annotation text-on-surface-variant uppercase tracking-widest mb-2">
+        Project Resources
+      </h3>
+      {links.github && (
+        <a href={links.github} target="_blank" rel="noreferrer" className={buttonClass}>
+          <span className="font-annotation text-annotation text-on-surface font-bold flex items-center gap-2">
+            <span className="material-symbols-outlined text-lg">code</span>
+            {variant === "sidebar" ? "GitHub Repo" : "View GitHub"}
+          </span>
+          {variant === "sidebar" && (
+            <span className="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors text-sm">
+              open_in_new
+            </span>
+          )}
+        </a>
+      )}
+      {links.liveDemo && (
+        <a href={links.liveDemo} target="_blank" rel="noreferrer" className={buttonClass}>
+          <span className="font-annotation text-annotation text-on-surface font-bold flex items-center gap-2">
+            <span className="material-symbols-outlined text-lg">play_circle</span>
+            Live Demo
+          </span>
+          {variant === "sidebar" && (
+            <span className="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors text-sm">
+              open_in_new
+            </span>
+          )}
+        </a>
+      )}
+      {links.srsPdf && (
+        <a href={links.srsPdf} className={buttonClass}>
+          <span className="font-annotation text-annotation text-on-surface font-bold flex items-center gap-2">
+            <span className="material-symbols-outlined text-lg">download</span>
+            Download SRS PDF
+          </span>
+        </a>
+      )}
+    </div>
+  )
+}
+
 function LumineCard({ project }: { project: ProjectContent }) {
   return (
     <section className="bg-surface-container-lowest border border-outline rounded-xl overflow-hidden flex flex-col md:flex-row">
@@ -362,52 +419,7 @@ function LumineCard({ project }: { project: ProjectContent }) {
       </div>
 
       <div className="md:w-1/3 bg-surface-container-low border-t md:border-t-0 md:border-l border-outline p-6 md:p-8 flex flex-col justify-between">
-        <div className="flex flex-col gap-4">
-          <h3 className="font-annotation text-annotation text-on-surface-variant uppercase tracking-widest mb-2">
-            Project Resources
-          </h3>
-          {project.links.github && (
-            <a
-              href={project.links.github}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center justify-between w-full p-3 border border-outline rounded hover:border-primary transition-colors bg-surface-container-lowest group"
-            >
-              <span className="font-annotation text-annotation text-on-surface font-bold flex items-center gap-2">
-                <span className="material-symbols-outlined text-lg">code</span>
-                GitHub Repo
-              </span>
-              <span className="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors text-sm">
-                open_in_new
-              </span>
-            </a>
-          )}
-          {project.links.liveDemo && (
-            <a
-              href={project.links.liveDemo}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center justify-between w-full p-3 border border-outline rounded hover:border-primary transition-colors bg-surface-container-lowest group"
-            >
-              <span className="font-annotation text-annotation text-on-surface font-bold flex items-center gap-2">
-                <span className="material-symbols-outlined text-lg">play_circle</span>
-                Live Demo
-              </span>
-              <span className="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors text-sm">
-                open_in_new
-              </span>
-            </a>
-          )}
-          {project.links.srsPdf && (
-            <a
-              href={project.links.srsPdf}
-              className="mt-4 w-full bg-surface-container-lowest border border-secondary text-secondary font-annotation text-annotation py-3 px-4 rounded hover:bg-secondary hover:text-on-secondary transition-colors flex items-center justify-center gap-2"
-            >
-              <span className="material-symbols-outlined text-lg">download</span>
-              Download SRS PDF
-            </a>
-          )}
-        </div>
+        <ProjectResourceLinks links={project.links} variant="sidebar" />
         <div className="mt-8 pt-8 border-t border-outline flex justify-center">
           <QrCode url={site.deployedUrl} caption="Scan to share this evidence hub" />
         </div>
@@ -461,19 +473,7 @@ function SecondaryCard({ project }: { project: ProjectContent }) {
             </div>
           </div>
         </div>
-        <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
-          {project.links.github && (
-            <a
-              href={project.links.github}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-surface-container-lowest border border-outline rounded font-annotation text-annotation text-on-surface hover:border-primary transition-colors"
-            >
-              <span className="material-symbols-outlined text-base">code</span>
-              View GitHub
-            </a>
-          )}
-        </div>
+        <ProjectResourceLinks links={project.links} variant="compact" />
       </div>
       <ProductionGallery project={project} />
       <LogicVsLive project={project} />
