@@ -66,6 +66,101 @@ function DiagramGallery({ project }: { project: ProjectContent }) {
   )
 }
 
+function ProductionGallery({ project }: { project: ProjectContent }) {
+  if (!project.uiScreenshots || project.uiScreenshots.length === 0) return null
+
+  return (
+    <div className="border-t border-outline pt-6 mt-2">
+      <h3 className="font-annotation text-annotation text-on-surface-variant uppercase tracking-widest mb-4">
+        Production Gallery
+      </h3>
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        {project.uiScreenshots.map((shot) => (
+          <div
+            key={shot.label}
+            className="border border-outline bg-surface-container-low rounded p-3"
+          >
+            <div className="aspect-[9/16] bg-surface-container-highest rounded border border-outline mb-3 overflow-hidden">
+              <img
+                src={shot.image}
+                alt={`${project.name} ${shot.label} screenshot`}
+                loading="lazy"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <p className="font-annotation text-annotation text-on-surface font-bold mb-1">
+              {shot.label}
+            </p>
+            <p className="text-xs text-on-surface-variant leading-tight">{shot.caption}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function LogicVsLive({ project }: { project: ProjectContent }) {
+  if (!project.logicVsLive || project.logicVsLive.length === 0) return null
+
+  return (
+    <div className="border-t border-outline pt-6 mt-2">
+      <h3 className="font-annotation text-annotation text-on-surface-variant uppercase tracking-widest mb-4">
+        Logic vs. Live
+      </h3>
+      <div className="flex flex-col gap-6">
+        {project.logicVsLive.map((pair) => (
+          <div
+            key={pair.label}
+            className="bg-surface-container-low border border-outline rounded-lg p-4"
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center relative">
+              <div className="relative">
+                <span className="font-annotation text-annotation absolute top-2 left-2 bg-surface-container-lowest/90 px-1 border border-outline rounded z-10">
+                  LOGIC
+                </span>
+                <div className="aspect-video bg-white border border-outline rounded overflow-hidden">
+                  <img
+                    src={pair.diagramImage}
+                    alt={`${project.name} ${pair.label} diagram`}
+                    loading="lazy"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+              </div>
+              <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 bg-surface-container-low rounded-full p-1 border border-outline">
+                <span className="material-symbols-outlined text-on-surface-variant text-sm">
+                  arrow_forward
+                </span>
+              </div>
+              <div className="flex md:hidden justify-center">
+                <span className="material-symbols-outlined text-on-surface-variant text-sm">
+                  arrow_downward
+                </span>
+              </div>
+              <div className="relative">
+                <span className="font-annotation text-annotation absolute top-2 right-2 bg-primary-container text-on-primary-container px-1 border border-outline rounded z-10">
+                  LIVE
+                </span>
+                <div className="aspect-video bg-surface-container-highest border border-outline rounded overflow-hidden">
+                  <img
+                    src={pair.screenshotImage}
+                    alt={`${project.name} ${pair.label} live screenshot`}
+                    loading="lazy"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+            <p className="font-body-md text-xs text-on-surface-variant mt-3 text-center">
+              {pair.caption}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 function LumineCard({ project }: { project: ProjectContent }) {
   return (
     <section className="bg-surface-container-lowest border border-outline rounded-xl overflow-hidden flex flex-col md:flex-row">
@@ -82,7 +177,7 @@ function LumineCard({ project }: { project: ProjectContent }) {
               </span>
             </div>
           </div>
-          <span className="material-symbols-outlined text-secondary text-3xl">architecture</span>
+          <span className="material-symbols-outlined text-secondary text-3xl">{project.headerIcon}</span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -193,6 +288,8 @@ function LumineCard({ project }: { project: ProjectContent }) {
           </div>
         )}
 
+        <ProductionGallery project={project} />
+        <LogicVsLive project={project} />
         <DiagramGallery project={project} />
       </div>
 
@@ -259,6 +356,7 @@ function SecondaryCard({ project }: { project: ProjectContent }) {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
         <div className="md:w-2/3">
           <div className="flex items-center gap-3 mb-3">
+            <span className="material-symbols-outlined text-secondary text-2xl">{project.headerIcon}</span>
             <h2 className="font-headline-md text-headline-md text-on-surface">{project.name}</h2>
             <span className="font-annotation text-annotation bg-surface-container-low text-on-surface px-2 py-1 border border-outline rounded">
               Secondary Project
@@ -309,6 +407,8 @@ function SecondaryCard({ project }: { project: ProjectContent }) {
           )}
         </div>
       </div>
+      <ProductionGallery project={project} />
+      <LogicVsLive project={project} />
       <DiagramGallery project={project} />
     </section>
   )
