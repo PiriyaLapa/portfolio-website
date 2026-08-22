@@ -187,7 +187,7 @@ export const site = {
       // scaffolded this component for why that distinction matters here).
       uiScreenshots: [
         { label: "Login", caption: "JWT-authenticated sign-in — role is always determined server-side, never client-submitted.", image: "/content/screenshots/lumine-login.png" },
-        { label: "Dashboard", caption: "Today's 2-2-2 follow-up queue, scoped to the signed-in associate's own customers.", image: "/content/screenshots/lumine-dashboard.png" },
+        { label: "Dashboard", caption: "Today's tiered follow-up queue, scoped to the signed-in associate's own customers.", image: "/content/screenshots/lumine-dashboard.png" },
         { label: "Task Detail", caption: "Single follow-up task — customer, due window, and the Mark as Done / Log Evidence actions.", image: "/content/screenshots/lumine-task-detail.png" },
         { label: "Evidence Logging", caption: "Photo + note captured against a task, required to close out a follow-up.", image: "/content/screenshots/lumine-evidence.png" },
         { label: "Customer Profile", caption: "Store-wide customer 360 — full purchase and follow-up history, any staff member in the store.", image: "/content/screenshots/lumine-customer-profile.png" },
@@ -199,7 +199,7 @@ export const site = {
           label: "Scheduling Logic → Today's Queue",
           diagramImage: "/content/diagrams/lumine-dfd-l2-schedule-followups.svg",
           screenshotImage: "/content/screenshots/lumine-dashboard.png",
-          caption: "The 2-2-2 scheduling flow on the left is what actually produces the follow-up queue an associate sees on the right.",
+          caption: "The tiered scheduling flow on the left is what actually produces the follow-up queue an associate sees on the right.",
         },
         {
           label: "Customer Profile Logic → Live Screen",
