@@ -56,7 +56,7 @@ export function DiagramGallery({ project }: { project: ProjectContent }) {
             className="font-annotation text-annotation text-tech-blue hover:text-primary transition-colors inline-flex items-center gap-1"
           >
             {showAllDiagrams ? "Show fewer diagrams" : `View all ${totalCount} diagrams`}
-            <span className="material-symbols-outlined text-sm">
+            <span aria-hidden="true" className="material-symbols-outlined text-sm">
               {showAllDiagrams ? "expand_less" : "expand_more"}
             </span>
           </button>
@@ -137,7 +137,7 @@ export function ProductionGallery({ project }: { project: ProjectContent }) {
               aria-label="Previous screenshot"
               className="absolute left-0 top-1/2 -translate-y-1/2 bg-surface-container-lowest/80 border border-outline p-2 rounded-full text-primary hover:bg-primary hover:text-on-primary transition-colors"
             >
-              <span className="material-symbols-outlined">chevron_left</span>
+              <span aria-hidden="true" className="material-symbols-outlined">chevron_left</span>
             </button>
             <button
               type="button"
@@ -145,7 +145,7 @@ export function ProductionGallery({ project }: { project: ProjectContent }) {
               aria-label="Next screenshot"
               className="absolute right-0 top-1/2 -translate-y-1/2 bg-surface-container-lowest/80 border border-outline p-2 rounded-full text-primary hover:bg-primary hover:text-on-primary transition-colors"
             >
-              <span className="material-symbols-outlined">chevron_right</span>
+              <span aria-hidden="true" className="material-symbols-outlined">chevron_right</span>
             </button>
             <div className="flex justify-center gap-2 mt-4">
               {shots.map((shot, i) => (
@@ -154,10 +154,15 @@ export function ProductionGallery({ project }: { project: ProjectContent }) {
                   type="button"
                   onClick={() => setActiveIndex(i)}
                   aria-label={`Show ${shot.label}`}
-                  className={`w-2 h-2 rounded-full transition-colors ${
-                    i === activeIndex ? "bg-primary" : "bg-outline"
-                  }`}
-                />
+                  aria-current={i === activeIndex}
+                  className="p-2.5 flex items-center justify-center"
+                >
+                  <span
+                    className={`block rounded-full transition-all ${
+                      i === activeIndex ? "w-3 h-2 bg-primary" : "w-2 h-2 bg-outline"
+                    }`}
+                  />
+                </button>
               ))}
             </div>
           </>
@@ -186,7 +191,7 @@ export function LogicVsLive({ project }: { project: ProjectContent }) {
                 <span className="font-annotation text-annotation absolute top-2 left-2 bg-surface-container-lowest/90 px-1 border border-outline rounded z-10">
                   LOGIC
                 </span>
-                <div className="aspect-video bg-white border border-outline rounded overflow-hidden">
+                <div className="aspect-video bg-surface-container-lowest border border-outline rounded overflow-hidden">
                   <img
                     src={pair.diagramImage}
                     alt={`${project.name} ${pair.label} diagram`}
@@ -195,12 +200,15 @@ export function LogicVsLive({ project }: { project: ProjectContent }) {
                   />
                 </div>
               </div>
-              <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 bg-surface-container-low rounded-full p-1 border border-outline">
+              <div
+                aria-hidden="true"
+                className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 bg-surface-container-low rounded-full p-1 border border-outline"
+              >
                 <span className="material-symbols-outlined text-on-surface-variant text-sm">
                   arrow_forward
                 </span>
               </div>
-              <div className="flex md:hidden justify-center">
+              <div aria-hidden="true" className="flex md:hidden justify-center">
                 <span className="material-symbols-outlined text-on-surface-variant text-sm">
                   arrow_downward
                 </span>
@@ -209,7 +217,7 @@ export function LogicVsLive({ project }: { project: ProjectContent }) {
                 <span className="font-annotation text-annotation absolute top-2 right-2 bg-primary-container text-on-primary-container px-1 border border-outline rounded z-10">
                   LIVE
                 </span>
-                <div className="aspect-video bg-surface-container-highest border border-outline rounded overflow-hidden">
+                <div className="aspect-[9/16] max-h-96 mx-auto bg-surface-container-highest border border-outline rounded overflow-hidden">
                   <img
                     src={pair.screenshotImage}
                     alt={`${project.name} ${pair.label} live screenshot`}
@@ -251,33 +259,31 @@ export function ProjectResourceLinks({
       {links.github && (
         <a href={links.github} target="_blank" rel="noreferrer" className={buttonClass}>
           <span className="font-annotation text-annotation text-on-surface font-bold flex items-center gap-2">
-            <span className="material-symbols-outlined text-lg">code</span>
+            <span aria-hidden="true" className="material-symbols-outlined text-lg">code</span>
             {variant === "sidebar" ? "GitHub Repo" : "View GitHub"}
+            <span className="sr-only">(opens in new tab)</span>
           </span>
-          {variant === "sidebar" && (
-            <span className="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors text-sm">
-              open_in_new
-            </span>
-          )}
+          <span aria-hidden="true" className="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors text-sm">
+            open_in_new
+          </span>
         </a>
       )}
       {links.liveDemo && (
         <a href={links.liveDemo} target="_blank" rel="noreferrer" className={buttonClass}>
           <span className="font-annotation text-annotation text-on-surface font-bold flex items-center gap-2">
-            <span className="material-symbols-outlined text-lg">play_circle</span>
+            <span aria-hidden="true" className="material-symbols-outlined text-lg">play_circle</span>
             Live Demo
+            <span className="sr-only">(opens in new tab)</span>
           </span>
-          {variant === "sidebar" && (
-            <span className="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors text-sm">
-              open_in_new
-            </span>
-          )}
+          <span aria-hidden="true" className="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors text-sm">
+            open_in_new
+          </span>
         </a>
       )}
       {links.srsPdf && (
         <a href={links.srsPdf} className={buttonClass}>
           <span className="font-annotation text-annotation text-on-surface font-bold flex items-center gap-2">
-            <span className="material-symbols-outlined text-lg">download</span>
+            <span aria-hidden="true" className="material-symbols-outlined text-lg">download</span>
             Download SRS PDF
           </span>
         </a>
@@ -302,7 +308,7 @@ function LumineCard({ project }: { project: ProjectContent }) {
               </span>
             </div>
           </div>
-          <span className="material-symbols-outlined text-secondary text-3xl">{project.headerIcon}</span>
+          <span aria-hidden="true" className="material-symbols-outlined text-secondary text-3xl">{project.headerIcon}</span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -436,7 +442,7 @@ function SecondaryCard({ project }: { project: ProjectContent }) {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
         <div className="md:w-2/3">
           <div className="flex items-center gap-3 mb-3">
-            <span className="material-symbols-outlined text-secondary text-2xl">{project.headerIcon}</span>
+            <span aria-hidden="true" className="material-symbols-outlined text-secondary text-2xl">{project.headerIcon}</span>
             <h2 className="font-headline-md text-headline-md text-on-surface">{project.name}</h2>
             <span className="font-annotation text-annotation bg-surface-container-low text-on-surface px-2 py-1 border border-outline rounded">
               Secondary Project

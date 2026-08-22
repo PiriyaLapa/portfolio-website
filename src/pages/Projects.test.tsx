@@ -40,13 +40,13 @@ describe("ProjectResourceLinks", () => {
     expect(screen.getAllByText("open_in_new")).toHaveLength(2)
   })
 
-  it("renders compact labels with no open_in_new icon anywhere", () => {
+  it("renders compact labels, with open_in_new on github/liveDemo (both open in a new tab) but not srsPdf", () => {
     render(<ProjectResourceLinks links={allLinks} variant="compact" />)
 
     expect(screen.getByText("View GitHub")).toBeInTheDocument()
     expect(screen.getByText("Live Demo")).toBeInTheDocument()
     expect(screen.getByText("Download SRS PDF")).toBeInTheDocument()
-    expect(screen.queryByText("open_in_new")).not.toBeInTheDocument()
+    expect(screen.getAllByText("open_in_new")).toHaveLength(2)
   })
 
   it("renders nothing when there are no links", () => {
