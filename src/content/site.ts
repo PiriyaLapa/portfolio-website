@@ -212,7 +212,7 @@ export const site = {
         impact:
           "In daily personal use, with a tested FastAPI backend and mobile app built alongside a sibling as product owner.",
       },
-      metrics: ["116/116 backend tests passing", "113/113 mobile tests passing"],
+      metrics: ["103/103 backend tests passing", "150/150 mobile tests passing"],
       headerIcon: "pets",
       techStack: [
         { category: "Frontend", items: ["React Native", "Expo", "TypeScript"] },
