@@ -19,9 +19,15 @@ session instead of re-deriving it each time.
 1. `ψ/memory/learnings/session-metrics.md` — check whether the headless-browser
    friction has been resolved since this file was written; if a real browser is
    now available, prefer an actual visual check over this workaround.
-2. The commit(s) or diff you're verifying, so you know which specific content
+2. **Don't assume the `vercel` CLI is installed.** It was available in the
+   2026-08-20 session but `command not found` in the 2026-08-21 session — same
+   repo, different sandbox instance. Check with `which vercel` before relying
+   on it (see `ψ/memory/learnings/2026-08-21_verification-workflows-need-per-environment-tool-checks.md`).
+   If it's missing, skip straight to the `gh api` + curl fallback in step 1
+   below rather than treating the CLI's absence as a blocker.
+3. The commit(s) or diff you're verifying, so you know which specific content
    strings should now be present (or absent) in the deployed bundle.
-3. `site.ts` `deployedUrl` — the current canonical deployed URL to check (note:
+4. `site.ts` `deployedUrl` — the current canonical deployed URL to check (note:
    as of the 2026-08-20 handoff there's an open discrepancy between this value
    and a `piriyalapa.dev` alias seen in `vercel inspect` output — flag if this is
    still unresolved rather than assuming which URL is authoritative).
@@ -30,16 +36,24 @@ session instead of re-deriving it each time.
 
 ## Workflow
 
-1. **Confirm the deployment built from the expected commit:**
+1. **Confirm the deployment built from the expected commit** — two equally
+   valid methods, pick whichever tool is actually present:
    ```bash
+   # If vercel CLI is available:
    vercel inspect <deployment-url-or-latest>
+
+   # Always available, no CLI dependency (confirmed working 2026-08-21):
+   gh api repos/<owner>/<repo>/commits/<sha>/status --jq '.state'
    ```
    Check the deployment's source commit SHA matches what you expect (the commit
-   you just pushed, or the one you're verifying).
+   you just pushed, or the one you're verifying). The `gh api` route confirms
+   build success; it does not by itself confirm page content — step 3 below is
+   still required either way.
 
 2. **Fetch the deployed JS bundle:**
    Find the built asset path (e.g. `dist/assets/index-*.js` locally, or fetch the
-   live URL's HTML to find the hashed bundle filename), then fetch its content.
+   live URL's HTML via `curl` to find the hashed bundle filename), then fetch its
+   content directly with `curl` — no browser or CLI needed for this step.
 
 3. **Grep the fetched bundle for expected strings:**
    - Strings that should be **gone** (old copy, retired claims, anything the
