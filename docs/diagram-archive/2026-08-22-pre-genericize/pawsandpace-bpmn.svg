@@ -70,6 +70,8 @@
 <rect x="1580.0" y="440.0" width="160.0" height="60.0" rx="6" ry="6" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
 <text x="1660.0" y="465.0" text-anchor="middle" font-size="12" font-weight="normal" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">Return</text>
 <text x="1660.0" y="482.0" text-anchor="middle" font-size="12" font-weight="normal" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">ActivitySaveResponse</text>
-
+<text x="46.0" y="567.0" text-anchor="start" font-size="11" font-weight="normal" fill="#666666" style="font-family:'Helvetica Neue',Arial,sans-serif">No conflict/approval gateway exists before the commit (contrast with systems requiring a send-enabled kill switch or date-range overlap check) —</text>
+<text x="46.0" y="583.0" text-anchor="start" font-size="11" font-weight="normal" fill="#666666" style="font-family:'Helvetica Neue',Arial,sans-serif">the write is unconditional once JWT-authenticated. hunger is capped at 100 after decay+restore, mood is re-derived every write, never stored</text>
+<text x="46.0" y="599.0" text-anchor="start" font-size="11" font-weight="normal" fill="#666666" style="font-family:'Helvetica Neue',Arial,sans-serif">independently of hunger. Verified 2026-08-20 against routers/activities.py, services/game_engine_service.py.</text>
 </g>
 </svg>

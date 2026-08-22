@@ -165,7 +165,7 @@ export const site = {
       // All 13 exported 2026-08-18 directly from the real, code-verified
       // docs/diagrams/lumine_diagrams.drawio in the project-lumine repo (develop
       // branch) — supersedes the 6-diagram Mermaid draft from earlier the same day
-      // (archived at public/content/diagrams/archive/2026-08-18-mermaid-notion-draft/).
+      // (archived at docs/diagram-archive/2026-08-18-mermaid-notion-draft/).
       // `curated: true` = shown by default; the rest sit behind "view all 13 diagrams".
       diagrams: [
         { label: "Use Case Diagram", figure: "FIG. 1", image: "/content/diagrams/lumine-use-case.svg", curated: true },

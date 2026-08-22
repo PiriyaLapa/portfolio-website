@@ -69,6 +69,8 @@
 <text x="386.0" y="450.0" text-anchor="start" font-size="11" font-weight="normal" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">completed</text>
 <text x="386.0" y="466.0" text-anchor="start" font-size="11" font-weight="normal" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">created_at / updated_at</text>
 <text x="386.0" y="482.0" text-anchor="start" font-size="11" font-weight="normal" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">UK(user_id, date, goal_type)</text>
-
+<text x="46.0" y="532.0" text-anchor="start" font-size="11" font-weight="normal" fill="#666666" style="font-family:'Helvetica Neue',Arial,sans-serif">Every activity write recomputes and overwrites CATS.hunger/total_exp/mood/current_form_id in the same commit —</text>
+<text x="46.0" y="548.0" text-anchor="start" font-size="11" font-weight="normal" fill="#666666" style="font-family:'Helvetica Neue',Arial,sans-serif">the cat has no independent history table, only ACTIVITIES as the append-only log. Verified 2026-08-20</text>
+<text x="46.0" y="564.0" text-anchor="start" font-size="11" font-weight="normal" fill="#666666" style="font-family:'Helvetica Neue',Arial,sans-serif">field-by-field against backend/app/models/*.py.</text>
 </g>
 </svg>

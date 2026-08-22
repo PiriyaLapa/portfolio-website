@@ -80,6 +80,7 @@
 <text x="920.0" y="70.5" text-anchor="middle" font-size="12" font-weight="normal" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">activity_repo)</text>
 <rect x="1080.0" y="30.0" width="140.0" height="40.0" rx="0" ry="0" fill="#f5f5f5" stroke="#666666" stroke-width="1.5"/>
 <text x="1150.0" y="53.5" text-anchor="middle" font-size="12" font-weight="normal" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">TiDB Cloud</text>
-
+<text x="41.0" y="640.0" text-anchor="start" font-size="11" font-weight="normal" fill="#666666" style="font-family:'Helvetica Neue',Arial,sans-serif">Endpoint path, JWT dependency, lazy hunger-decay model (no cron/scheduler — decay is computed on next write), the 100-cap on hunger, and the single-commit</text>
+<text x="41.0" y="656.0" text-anchor="start" font-size="11" font-weight="normal" fill="#666666" style="font-family:'Helvetica Neue',Arial,sans-serif">atomicity verified 2026-08-20 against routers/activities.py, services/game_engine_service.py, config.py.</text>
 </g>
 </svg>

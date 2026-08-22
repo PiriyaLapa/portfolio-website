@@ -15,6 +15,8 @@
 <ellipse cx="550.0" cy="95.0" rx="110.0" ry="60.0" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.5"/>
 <text x="550.0" y="90.0" text-anchor="middle" font-size="12" font-weight="normal" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">0.0</text>
 <text x="550.0" y="107.0" text-anchor="middle" font-size="12" font-weight="normal" fill="#000000" style="font-family:'Helvetica Neue',Arial,sans-serif">Paws &amp; Pace System</text>
-
+<text x="66.0" y="227.0" text-anchor="start" font-size="11" font-weight="normal" fill="#666666" style="font-family:'Helvetica Neue',Arial,sans-serif">Only one external entity — no third-party systems sit at the boundary (contrast with systems that integrate</text>
+<text x="66.0" y="243.0" text-anchor="start" font-size="11" font-weight="normal" fill="#666666" style="font-family:'Helvetica Neue',Arial,sans-serif">SAP/CRM/notification providers). Level 1 (separate tab) decomposes this single process into its real</text>
+<text x="66.0" y="259.0" text-anchor="start" font-size="11" font-weight="normal" fill="#666666" style="font-family:'Helvetica Neue',Arial,sans-serif">sub-processes and data stores. Verified 2026-08-20 against backend/app/routers/*.py.</text>
 </g>
 </svg>
