@@ -194,6 +194,26 @@ export const site = {
         { label: "Auto-Touch Queue", caption: "AI-drafted outreach queued for customers with no contact channel or an overdue touch.", image: "/content/screenshots/lumine-auto-touch.png" },
         { label: "Follow-Up Report", caption: "KPI dashboard — associates see their own stats, managers see the full per-staff breakdown.", image: "/content/screenshots/lumine-followup-dashboard.png" },
       ],
+      logicVsLive: [
+        {
+          label: "Scheduling Logic → Today's Queue",
+          diagramImage: "/content/diagrams/lumine-dfd-l2-schedule-followups.svg",
+          screenshotImage: "/content/screenshots/lumine-dashboard.png",
+          caption: "The 2-2-2 scheduling flow on the left is what actually produces the follow-up queue an associate sees on the right.",
+        },
+        {
+          label: "Customer Profile Logic → Live Screen",
+          diagramImage: "/content/diagrams/lumine-dfd-l2-view-customer-profile.svg",
+          screenshotImage: "/content/screenshots/lumine-customer-profile.png",
+          caption: "Store-wide read, PII fields excluded — the diagram's access rule matches exactly what renders on the live customer profile screen.",
+        },
+        {
+          label: "Auto-Touch Logic → Queue Screen",
+          diagramImage: "/content/diagrams/lumine-dfd-l2-auto-touch.svg",
+          screenshotImage: "/content/screenshots/lumine-auto-touch.png",
+          caption: "Draft-then-review flow — the diagram's two-step design is why the live queue always shows an editable draft, never an auto-sent message.",
+        },
+      ],
       primary: true,
     },
     {
@@ -247,6 +267,20 @@ export const site = {
         { label: "Run Complete", caption: "Post-run summary — distance, time, calories, and EXP earned feed straight into the cat's growth.", image: "/content/screenshots/pawsandpace-run-complete.png" },
         { label: "Evolution", caption: "Crossing an EXP tier triggers a real evolution — Kitten → Adult → Champion → Legend, each with weighted-random rarity.", image: "/content/screenshots/pawsandpace-evolution.png" },
         { label: "Dashboard", caption: "The cat's home screen — tier, EXP progress, hunger, and mood, all driven by real activity data.", image: "/content/screenshots/pawsandpace-dashboard.png" },
+      ],
+      logicVsLive: [
+        {
+          label: "Run Lifecycle → Run Complete Screen",
+          diagramImage: "/content/diagrams/pawsandpace-bpmn.svg",
+          screenshotImage: "/content/screenshots/pawsandpace-run-complete.png",
+          caption: "The full run lifecycle in the diagram ends exactly where the app does — hunger restored and EXP awarded on the summary screen.",
+        },
+        {
+          label: "Data Model → Dashboard",
+          diagramImage: "/content/diagrams/pawsandpace-er-diagram.svg",
+          screenshotImage: "/content/screenshots/pawsandpace-dashboard.png",
+          caption: "Every value on the dashboard — tier, hunger, mood — reads straight from the schema on the left, nothing hardcoded for display.",
+        },
       ],
       primary: false,
     },
